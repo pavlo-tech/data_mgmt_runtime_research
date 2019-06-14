@@ -47,6 +47,8 @@
 # include <limits.h>
 # include <sys/time.h>
 
+
+#include <stdlib.h>
 /*-----------------------------------------------------------------------
  * INSTRUCTIONS:
  *
@@ -177,9 +179,23 @@
 #define STREAM_TYPE double
 #endif
 
-static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
-			b[STREAM_ARRAY_SIZE+OFFSET],
-			c[STREAM_ARRAY_SIZE+OFFSET];
+//static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
+			//b[STREAM_ARRAY_SIZE+OFFSET],
+			//c[STREAM_ARRAY_SIZE+OFFSET];
+
+static STREAM_TYPE *a, *b, *c; 
+
+void init_arrays()
+{
+ 	a	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+	b	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+	c	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+}
+
+void delete_arrays()
+{
+	free(a); free(b); free(c);
+}
 
 static double	avgtime[4] = {0}, maxtime[4] = {0},
 		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};
@@ -208,6 +224,7 @@ extern int omp_get_num_threads();
 int
 main()
     {
+		init_arrays();
     int			quantum, checktick();
     int			BytesPerWord;
     int			k;
@@ -376,6 +393,7 @@ main()
     checkSTREAMresults();
     printf(HLINE);
 
+		delete_arrays();
     return 0;
 }
 
@@ -421,10 +439,10 @@ checktick()
 double mysecond()
 {
         struct timeval tp;
-        struct timezone tzp;
+        //struct timezone tzp;
         int i;
 
-        i = gettimeofday(&tp,&tzp);
+        i = gettimeofday(&tp,NULL);
         return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
 }
 

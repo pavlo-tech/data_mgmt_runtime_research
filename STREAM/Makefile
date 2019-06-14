@@ -14,8 +14,9 @@ stream_f.exe: stream.f mysecond.o
 	$(FF) $(FFLAGS) -c stream.f
 	$(FF) $(FFLAGS) stream.o mysecond.o -o stream_f.exe
 
+#$(CC) $(CFLAGS) $(MYFLAGS) stream.c -o stream_c.exe
 stream_c.exe: stream.c
-	$(CC) $(CFLAGS) $(MYFLAGS) stream.c -o stream_c.exe
+	$(CC) $(CFLAGS) $(MYFLAGS) -std=c11 stream.c -o stream_c.exe
 
 #g++ -std=c++98 -O3 -fPIC -Wall -Wextra -pedantic -I../zfp/include -I../zfp/array stream_zfp.cpp -o stream_zfp_c.exe
 stream_zfp_c.exe: stream_zfp.cpp
