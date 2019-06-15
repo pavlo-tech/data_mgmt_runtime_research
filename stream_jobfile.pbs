@@ -1,17 +1,17 @@
 #!/bin/bash
 #PBS -l select=1:ncpus=40:mem=100gb
-#PBS -l walltime=240:00:00
+#PBS -l walltime=48:00:00
 #PBS -j oe
 #PBS -q fthpc
 #PBS -N xcompress
-#PBS -J 252-503
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+#PBS -J 756-1007
 
 #0PBS -J 0-251
 #0PBS -J 252-503
 #0PBS -J 504-755
 #0PBS -J 756-1007
-#0PBS -M ptriant@g.clemson.edu
-#0PBS -m ae
 
 module load gcc/4.8.1
 module load mpich
@@ -64,10 +64,14 @@ cd $output_folder
 MYFLAGS="-DSTREAM_TYPE=$stream_type -DSTREAM_ARRAY_SIZE=$stream_size -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
-gcc -O3 -mcmodel=large $MYFLAGS stream.c -o stream_c.exe
+gcc -std=c11 -O3 -mcmodel=large $MYFLAGS stream.c -o stream_c.exe
 g++ -std=c++98 -w -O3 -mcmodel=large -fPIC -pedantic $INCFLAGS $MYFLAGS stream_zfp.cpp $LINKFLAGS -o stream_zfp_c.exe
 
 ./stream_c.exe > stream_output.txt
 ./stream_zfp_c.exe > zfp_output.txt
+
+rm ./stream_c.exe
+rm ./stream_zfp_c.exe
+
 
 
