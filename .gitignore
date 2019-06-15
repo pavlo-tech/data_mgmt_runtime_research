@@ -2,3 +2,4 @@ xcompress.*
 test_results/*
 job_output/*
 old_test_results/*
+*.pdf

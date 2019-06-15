@@ -51,7 +51,9 @@ def get_STREAM_DataFrame(data_type, stream_size, rate, cache_size, isZFP):
 				ct += 1
 
 				row=[data_type,stream_size,rate,cache_size,isZFP]
-				row.extend(re.findall(r"[A-Za-z]+|[\d\.]+", line))
+				row.extend(re.findall(r"[A-Za-z]+", line))
+				row.extend(map(float,re.findall(r"[\d\.]+", line)))
+				
 				new_row=pd.DataFrame([row],columns=cols)
 
 				df=df.append(new_row,ignore_index=True)
@@ -75,12 +77,12 @@ for data_type in os.listdir("./old_test_results/STREAM/"):
 					ignore_index=True)
 
 #print STREAM_df
-#STREAM_df.to_csv("STREAM_df.csv")
+STREAM_df.to_csv("STREAM_df.csv")
 
 df=STREAM_df.loc[(STREAM_df['is_zfp']) & (STREAM_df['data_type'] == 'double') \
-	& (STREAM_df['zfp_rate'] <= 64) \
-	& (STREAM_df['stream_size']== 536870912)]
-	#& (STREAM_df['Function'] == 'Triad')]
+	#& (STREAM_df['zfp_rate'] <= 64) \
+	& (STREAM_df['stream_size']== 1048576)]
+	#& (STREAM_df['stream_size']== 536870912)]
 
 #print df
 t = df.loc[df['Function'] == 'Triad']
@@ -88,21 +90,23 @@ a = df.loc[df['Function'] == 'Add']
 c = df.loc[df['Function'] == 'Copy']
 s = df.loc[df['Function'] == 'Scale']
 
-
-plt.plot(c['zfp_rate'].tolist(),c['Avg time'].tolist(),color=colors[0],label='Copy')
-plt.plot(s['zfp_rate'].tolist(),s['Avg time'].tolist(),color=colors[1],label='Scale')
-plt.plot(a['zfp_rate'].tolist(),a['Avg time'].tolist(),color=colors[2],label='Add')
-plt.plot(t['zfp_rate'].tolist(),t['Avg time'].tolist(),color=colors[3],label='Triad')
+plt.figure()
+plt.plot(c['zfp_rate'],c['Avg time'],color=colors[0],label='Copy')
+plt.plot(s['zfp_rate'],s['Avg time'],color=colors[1],label='Scale') 
+plt.plot(a['zfp_rate'],a['Avg time'],color=colors[2],label='Add')
+plt.plot(t['zfp_rate'],t['Avg time'],color=colors[3],label='Triad')
 
 #plt.ylim(df['Avg time'].min(), df['Avg time'].max())
-plt.semilogy()
-plt.xlim(2, 70)
+#plt.semilogy()
+plt.xlim(2, 520)
 plt.ylabel("Average Time", weight='bold')
 plt.xlabel("ZFP Rate", weight='bold')
-plt.legend(loc='upper center', frameon=True, ncol=2, fontsize=12)
+plt.title("Minimum Stream Size")
+plt.legend(loc='best', frameon=True, ncol=2, fontsize=12)
+#plt.legend(loc='upper center', frameon=True, ncol=2, fontsize=12)
 plt.tight_layout()
 
-plt.savefig("image.png")
+plt.savefig("min_all.pdf")
 plt.gcf().clear()
 
 
