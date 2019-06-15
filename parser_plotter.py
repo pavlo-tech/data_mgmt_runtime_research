@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import re
 
-'''
+#'''
 import seaborn as sns
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : True})
@@ -15,11 +15,11 @@ sns.set_color_codes()
 
 
 sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
-'''
+#'''
 
 # axis labels
 import matplotlib
-color = ["b", "g", "r", "y", "m"]
+colors = ["b", "g", "r", "y", "m"]
 font = {'family' : 'serif'}
 matplotlib.rc('font', **font)
 matplotlib.rcParams['ps.useafm'] = True
@@ -68,12 +68,41 @@ for data_type in os.listdir("./old_test_results/STREAM/"):
 			cache_size=0
 
 			STREAM_df = \
-				STREAM_df.append(get_STREAM_DataFrame(data_type, stream_size, rate, cache_size, False),ignore_index=True)
+				STREAM_df.append(get_STREAM_DataFrame(data_type, int(stream_size), int(rate), int(cache_size), False),\
+					ignore_index=True)
 			STREAM_df = \
-				STREAM_df.append(get_STREAM_DataFrame(data_type, stream_size, rate, cache_size, True),ignore_index=True)
+				STREAM_df.append(get_STREAM_DataFrame(data_type, int(stream_size), int(rate), int(cache_size), True),\
+					ignore_index=True)
 
 #print STREAM_df
-STREAM_df.to_csv("STREAM_df.csv")
+#STREAM_df.to_csv("STREAM_df.csv")
 
+df=STREAM_df.loc[(STREAM_df['is_zfp']) & (STREAM_df['data_type'] == 'double') \
+	& (STREAM_df['zfp_rate'] <= 64) \
+	& (STREAM_df['stream_size']== 536870912)]
+	#& (STREAM_df['Function'] == 'Triad')]
+
+#print df
+t = df.loc[df['Function'] == 'Triad']
+a = df.loc[df['Function'] == 'Add']
+c = df.loc[df['Function'] == 'Copy']
+s = df.loc[df['Function'] == 'Scale']
+
+
+plt.plot(c['zfp_rate'].tolist(),c['Avg time'].tolist(),color=colors[0],label='Copy')
+plt.plot(s['zfp_rate'].tolist(),s['Avg time'].tolist(),color=colors[1],label='Scale')
+plt.plot(a['zfp_rate'].tolist(),a['Avg time'].tolist(),color=colors[2],label='Add')
+plt.plot(t['zfp_rate'].tolist(),t['Avg time'].tolist(),color=colors[3],label='Triad')
+
+#plt.ylim(df['Avg time'].min(), df['Avg time'].max())
+plt.semilogy()
+plt.xlim(2, 70)
+plt.ylabel("Average Time", weight='bold')
+plt.xlabel("ZFP Rate", weight='bold')
+plt.legend(loc='upper center', frameon=True, ncol=2, fontsize=12)
+plt.tight_layout()
+
+plt.savefig("image.png")
+plt.gcf().clear()
 
 
