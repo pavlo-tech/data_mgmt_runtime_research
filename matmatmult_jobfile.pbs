@@ -1,0 +1,79 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=40:mem=100gb
+#PBS -l walltime=240:00:00
+#PBS -j oe
+#PBS -q fthpc
+#PBS -N xcompress
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+#0PBS -J 0-3
+
+
+module load gcc/4.8.1
+module load mpich
+module load python/3.4
+
+
+# init arrays: matrix width scaled by 2^10
+data_type_arr=(float double)
+matrix_width_arr=(1 4 8 16 32 64 128 256 512)
+zfp_rate_arr=(1 2 4 8 16 32 48 64)
+zfp_cache_size_arr=(0 1 32 64 128 256 512)
+
+((start = 3 * 252))
+#((start = ${PBS_ARRAY_INDEX} * 252))
+((end = $start + 252))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
+
+# get pos of each dimension using jobfile index
+((x0= $i % ${#data_type_arr[@]}))
+
+((x1= $i / ${#data_type_arr[@]}))
+((x1= $x1 % ${#matrix_width_arr[@]}))
+
+((x2= $i / ${#data_type_arr[@]}))
+((x2= $x2 / ${#matrix_width_arr[@]}))
+((x2= $x2 % ${#zfp_rate_arr[@]}))
+
+((x3= $i / ${#data_type_arr[@]}))
+((x3= $x3 / ${#matrix_width_arr[@]}))
+((x3= $x3 / ${#zfp_rate_arr[@]}))
+((x3= $x3 % ${#zfp_cache_size_arr[@]}))
+
+# init variables 
+data_type=${data_type_arr[$x0]}
+((matrix_width= ${matrix_width_arr[$x1]} * 2**10))
+zfp_rate=${zfp_rate_arr[$x2]}
+zfp_cache_size=${zfp_cache_size_arr[$x3]}
+
+# make folder to write output to
+output_folder=./test_results/matmatmult/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+mkdir -p $output_folder
+
+# copy source code to working directory
+cp ./MatrixMatrixMult/matmatmult.cpp $output_folder/
+
+# move to source code folder
+cd $output_folder
+
+# compile compressed version and uncompressed version
+matrix_width+="l"
+MYFLAGS="-DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
+LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
+
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o matmatmult.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large -I../zfp/include -I../zfp/array -DZFP $MYFLAGS matmatmult.cpp -L../zfp/lib -lzfp -o matmatmult_zfp.exe
+
+./matmatmult.exe > matmatmult_output.txt
+./matmatmult_zfp.exe > matmatmult_zfp_output.txt
+
+rm ./matmatmult.exe
+rm ./matmatmult_zfp.exe
+
+done
+
