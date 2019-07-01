@@ -179,11 +179,11 @@
 #define STREAM_TYPE double
 #endif
 
-//static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
-			//b[STREAM_ARRAY_SIZE+OFFSET],
-			//c[STREAM_ARRAY_SIZE+OFFSET];
+static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
+			b[STREAM_ARRAY_SIZE+OFFSET],
+			c[STREAM_ARRAY_SIZE+OFFSET];
 
-static STREAM_TYPE *a, *b, *c; 
+//static STREAM_TYPE *a, *b, *c; 
 
 void init_arrays()
 {
@@ -224,7 +224,7 @@ extern int omp_get_num_threads();
 int
 main()
     {
-		init_arrays();
+		//init_arrays();
     int			quantum, checktick();
     int			BytesPerWord;
     int			k;
@@ -393,7 +393,7 @@ main()
     checkSTREAMresults();
     printf(HLINE);
 
-		delete_arrays();
+		//delete_arrays();
     return 0;
 }
 

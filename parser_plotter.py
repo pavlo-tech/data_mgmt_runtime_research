@@ -32,9 +32,9 @@ cols=['data_type','stream_size','zfp_rate','cache_size','is_zfp',
 
 def get_STREAM_DataFrame(data_type, stream_size, rate, cache_size, isZFP):
 
-	stream_fname="./old_test_results/STREAM/"+data_type+"/"+ \
+	stream_fname="./test_results/STREAM/"+data_type+"/"+ \
 		str(stream_size)+"/"+str(rate)+"/"+str(cache_size)+"/stream_output.txt"
-	zfp_fname="./old_test_results/STREAM/"+data_type+"/"+ \
+	zfp_fname="./test_results/STREAM/"+data_type+"/"+ \
 		str(stream_size)+"/"+str(rate)+"/"+str(cache_size)+"/zfp_output.txt"
 
 
@@ -63,9 +63,9 @@ def get_STREAM_DataFrame(data_type, stream_size, rate, cache_size, isZFP):
 # create DateFrame to hold all of STREAM Results
 STREAM_df = pd.DataFrame(columns=cols)
 
-for data_type in os.listdir("./old_test_results/STREAM/"):
-	for stream_size in os.listdir("./old_test_results/STREAM/"+data_type+"/"):
-		for rate in os.listdir("./old_test_results/STREAM/"+data_type+"/"+ str(stream_size)+"/"):
+for data_type in os.listdir("./test_results/STREAM/"):
+	for stream_size in os.listdir("./test_results/STREAM/"+data_type+"/"):
+		for rate in os.listdir("./test_results/STREAM/"+data_type+"/"+ str(stream_size)+"/"):
 
 			cache_size=0
 
@@ -77,12 +77,19 @@ for data_type in os.listdir("./old_test_results/STREAM/"):
 					ignore_index=True)
 
 #print STREAM_df
-STREAM_df.to_csv("STREAM_df.csv")
+STREAM_df.to_csv("new_STREAM_df.csv")
 
-df=STREAM_df.loc[(STREAM_df['is_zfp']) & (STREAM_df['data_type'] == 'double') \
-	#& (STREAM_df['zfp_rate'] <= 64) \
-	& (STREAM_df['stream_size']== 1048576)]
-	#& (STREAM_df['stream_size']== 536870912)]
+
+Max=True
+#Max=False
+size = 536870912 if Max else 1048576
+streamd_size_B = size * 8
+streamd_size_MB = streamd_size_B / (2**20)
+
+df=STREAM_df.loc[(STREAM_df['is_zfp']) & (STREAM_df['data_type'] == 'double')	\
+& (STREAM_df['stream_size']== size)]
+
+
 
 #print df
 t = df.loc[df['Function'] == 'Triad']
@@ -91,22 +98,31 @@ c = df.loc[df['Function'] == 'Copy']
 s = df.loc[df['Function'] == 'Scale']
 
 plt.figure()
-plt.plot(c['zfp_rate'],c['Avg time'],color=colors[0],label='Copy')
-plt.plot(s['zfp_rate'],s['Avg time'],color=colors[1],label='Scale') 
-plt.plot(a['zfp_rate'],a['Avg time'],color=colors[2],label='Add')
-plt.plot(t['zfp_rate'],t['Avg time'],color=colors[3],label='Triad')
+#'''
+plt.plot(c['zfp_rate'],streamd_size_MB/c['Avg time'],color=colors[0],label='Copy')
+plt.plot(s['zfp_rate'],streamd_size_MB/s['Avg time'],color=colors[1],label='Scale') 
+plt.plot(a['zfp_rate'],streamd_size_MB/a['Avg time'],color=colors[2],label='Add')
+plt.plot(t['zfp_rate'],streamd_size_MB/t['Avg time'],color=colors[3],label='Triad')
+'''
+plt.plot(c['zfp_rate'],c['Best Rate MB/s'],color=colors[0],label='Copy')
+plt.plot(s['zfp_rate'],s['Best Rate MB/s'],color=colors[1],label='Scale') 
+plt.plot(a['zfp_rate'],a['Best Rate MB/s'],color=colors[2],label='Add')
+plt.plot(t['zfp_rate'],t['Best Rate MB/s'],color=colors[3],label='Triad')
+'''
+
+print c
 
 #plt.ylim(df['Avg time'].min(), df['Avg time'].max())
 #plt.semilogy()
 plt.xlim(2, 520)
-plt.ylabel("Average Time", weight='bold')
+plt.ylabel("Average Bandwidth (MB/s)", weight='bold')
 plt.xlabel("ZFP Rate", weight='bold')
-plt.title("Minimum Stream Size")
+plt.title(str(streamd_size_MB) + " MB Stream")
 plt.legend(loc='best', frameon=True, ncol=2, fontsize=12)
 #plt.legend(loc='upper center', frameon=True, ncol=2, fontsize=12)
 plt.tight_layout()
 
-plt.savefig("min_all.pdf")
+plt.savefig(("max" if Max else "min")+"_all.pdf")
 plt.gcf().clear()
 
 
