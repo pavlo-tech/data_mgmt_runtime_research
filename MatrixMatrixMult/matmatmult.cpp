@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctime>
+#include <math.h>
 
 #ifdef ZFP
 #include "zfparray2.h"
@@ -62,6 +63,21 @@ void init_mat_value(T A[], int A_m, int A_n, T value)
 		for (j = 0; j < A_n; ++j)
 			A[i * A_n + j] = value;
 }
+
+#ifdef ZFP
+template <typename T>
+T compute_RMSE(zfp::array2<T> matrix)
+{
+	T element_value = A_VALUE * B_VALUE * MATRIX_WIDTH;
+	T sumSQ = 0;
+	for (zfp::array2d::iterator it = matrix.begin(); it != matrix.end(); it++)
+	{
+		sumSQ += pow(element_value - matrix(it.i(),it.j()), 2);
+	}
+
+	return sqrt(sumSQ / (MATRIX_WIDTH * MATRIX_WIDTH));
+}
+#endif
 
 template <typename T>
 #ifdef ZFP
@@ -140,13 +156,13 @@ int main()
 	init_mat_value(A, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)A_VALUE);
 	init_mat_value(B, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)B_VALUE);
 
+	printf("Iteration,Time,RMSE\n");
 
 	for (int i = 0; i < NTIMES; ++i)
 	{
 		// clear AB
 		init_mat_value(AB, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)0);
 
-		printf("%d,",i);
 
 		clock_t begin = clock();
 		#ifdef TILED
@@ -157,7 +173,13 @@ int main()
 		clock_t end = clock();
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
-		printf("%lf\n", elapsed_secs);
+		#ifdef ZFP
+		DATA_TYPE rmse = compute_RMSE(AB);
+		#else 
+		DATA_TYPE rmse = 0;
+		#endif
+
+		printf("%d,%lf,%lf\n", i, elapsed_secs, rmse);
 	}
 }
 
