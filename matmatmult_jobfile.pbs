@@ -63,6 +63,7 @@ cp ./MatrixMatrixMult/matmatmult.cpp $output_folder/
 
 # move to source code folder
 cd $output_folder
+echo $output_folder
 
 # compile compressed version and uncompressed version
 matrix_width+="l"
@@ -72,14 +73,14 @@ LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
 
 g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o matmatmult.exe
 g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o matmatmult_zfp.exe
-echo "g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o matmatmult_zfp.exe"
+#echo "g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o matmatmult_zfp.exe"
 
 ./matmatmult.exe > matmatmult_output.txt
 ./matmatmult_zfp.exe > matmatmult_zfp_output.txt
 
 rm ./matmatmult.exe
 rm ./matmatmult_zfp.exe
-#rm matmatmult.cpp
+rm ./matmatmult.cpp
 
 done
 

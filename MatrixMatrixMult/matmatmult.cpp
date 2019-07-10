@@ -32,7 +32,7 @@
 
 template <typename T>
 #ifdef ZFP
-void print_matirx(zfp::array2<T> matrix, int m, int n)
+void print_matrix(zfp::array2<T> matrix, int m, int n)
 #else
 void print_matrix(T matrix[], int m, int n)
 #endif
@@ -53,7 +53,7 @@ void print_matrix(T matrix[], int m, int n)
 
 template <typename T>
 #ifdef ZFP
-void init_mat_value(zfp::array2<T> A, int A_m, int A_n, T value)
+void init_mat_value(zfp::array2<T> &A, int A_m, int A_n, T value)
 #else
 void init_mat_value(T A[], int A_m, int A_n, T value)
 #endif
@@ -81,7 +81,7 @@ T compute_RMSE(zfp::array2<T> matrix)
 
 template <typename T>
 #ifdef ZFP
-void multMat(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
+void multMat(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> &AB)
 #else
 void multMat(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 #endif
@@ -106,7 +106,7 @@ void multMat(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 
 template <typename T>
 #ifdef ZFP
-void multMat_tiled(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
+void multMat_tiled(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> &AB)
 #else
 void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 #endif
@@ -124,9 +124,9 @@ void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 		{
 			for (k = 0; k < A_n; ++k) // sum across row of A and column of B
 			{
-				for (m = 0; m < TILE_M; ++m) // sum for all values in tile
+				for (m = 0; m < TILE_M && (i+m) < A_m; ++m) // sum for all values in tile
 				{
-					for (n = 0; n < TILE_N; ++n)
+					for (n = 0; n < TILE_N && (j+n) < B_n; ++n)
 					{
 						AB[(i + m) * A_n + (j + n)]  += (A[(i + m) * A_n + k] * B[k * B_n + (j + n)]);
 					}

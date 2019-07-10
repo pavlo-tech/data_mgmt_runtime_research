@@ -1,4 +1,4 @@
-import numpy as np
+#import numpy as np
 import os
 import sys
 import matplotlib as mpl
@@ -29,16 +29,23 @@ matplotlib.rcParams['ps.useafm'] = True
 matplotlib.rcParams['pdf.use14corefonts'] = True
 
 
-cols=['data_type','matrix_width','zfp_rate','cache_size','is_zfp',
+cols=['tiled','tile_size','data_type','matrix_width','zfp_rate','cache_size','is_zfp',
 	'Iteration','Time','RMSE']
 
-df = pd.from_csv(("tiled_" if tiled else "")+"matmatmult_df.csv")
+df = pd.read_csv(("tiled_" if tiled else "")+"matmatmult_df.csv")
 
 # RUNTIME VS PS for rate w/ reasonably low rmse (below 48)
 # 1. characterize default performance
 # 2. tuning determine run with lowest execution on a per accuracy basis
 # 3. determine performance difference between 1 and 2.
 # Need Paper-Ready Figures by Monday.
+
+
+
+uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double')]
+sns.lineplot(x='matrix_width', y='Time', data=df, ci='sd')
+#.get_figure().savefig(("tiled_" if tiled else "")+"uncompressed.pdf")
+
 
 '''
 Max=True
@@ -51,9 +58,7 @@ df=STREAM_df.loc[(STREAM_df['is_zfp']) & (STREAM_df['data_type'] == 'double')	\
 & (STREAM_df['stream_size']== size)]
 '''
 
-
-
-print c
+'''
 
 #plt.ylim(df['Avg time'].min(), df['Avg time'].max())
 #plt.semilogy()
@@ -68,4 +73,4 @@ plt.tight_layout()
 plt.savefig(("max" if Max else "min")+"_all.pdf")
 plt.gcf().clear()
 
-
+'''

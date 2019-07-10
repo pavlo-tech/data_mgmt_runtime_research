@@ -30,11 +30,10 @@
 #define A_VALUE 1
 #define B_VALUE 2
 
-template <typename T>
 #ifdef ZFP
-void print_matirx(zfp::array2<T> matrix, int m, int n)
+void print_matrix(zfp::array2<DATA_TYPE> matrix, int m, int n)
 #else
-void print_matrix(T matrix[], int m, int n)
+void print_matrix(DATA_TYPE matrix[], int m, int n)
 #endif
 {
 	int r,c;
@@ -45,23 +44,30 @@ void print_matrix(T matrix[], int m, int n)
 
 		for (c = 0; c < n; ++c)
 		{
+#ifdef zfp
+			printf("%lf\t", (double)matrix(r,c));
+#else
 			printf("%lf\t", (double)matrix[r*n + c]);
+#endif
 		}
 		printf("|\n");
 	}
 }
 
-template <typename T>
 #ifdef ZFP
-void init_mat_value(zfp::array2<T> A, int A_m, int A_n, T value)
+void init_mat_value(zfp::array2<DATA_TYPE> &A, int A_m, int A_n, DATA_TYPE value)
 #else
-void init_mat_value(T A[], int A_m, int A_n, T value)
+void init_mat_value(DATA_TYPE A[], int A_m, int A_n, DATA_TYPE value)
 #endif
 {
 	int i,j; 
 	for (i = 0; i < A_m; ++i)
 		for (j = 0; j < A_n; ++j)
+#ifdef ZFP
+			A(i,j) = value;
+#else
 			A[i * A_n + j] = value;
+#endif
 }
 
 #ifdef ZFP
@@ -69,19 +75,32 @@ template <typename T>
 T compute_RMSE(zfp::array2<T> matrix)
 {
 	T element_value = A_VALUE * B_VALUE * MATRIX_WIDTH;
+	printf("\n\nelement_value = %lf\n\n",element_value);
 	T sumSQ = 0;
 	for (typename zfp::array2<T>::iterator it = matrix.begin(); it != matrix.end(); it++)
+/*	
+	for (int r = 0; r < MATRIX_WIDTH; ++r)
+		for (int c = 0; c < MATRIX_WIDTH; ++c)
+	*/
 	{
+		//printf("(%d,%d) = %lf\t%lf\n",it.i(), it.j(), (double)matrix(it.i(),it.j()),(double)element_value);
+		//printf("(%d,%d) = %lf\n",it.i(), it.j(), element_value);
+		printf("(%d,%d) = %lf\n",it.i(), it.j(), matrix(it.i(),it.j()));
+		//printf("(%d,%d) = %lf\t%lf\n",it.i(), it.j(), matrix(it.i(),it.j()), element_value);
 		sumSQ += pow(element_value - matrix(it.i(),it.j()), 2);
+		//sumSQ += pow((double)element_value - (double)matrix(c,r), 2);
+		//printf("\n\nsumSQ = %lf\n\n",sumSQ);
 	}
 
-	return sqrt(sumSQ / (MATRIX_WIDTH * MATRIX_WIDTH));
+	T rmse =  sqrt(sumSQ / (MATRIX_WIDTH * MATRIX_WIDTH));
+	printf("\n\nrmse = %lf\n\n", rmse);
+	return rmse;
 }
 #endif
 
 template <typename T>
 #ifdef ZFP
-void multMat(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
+void multMat(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> &AB)
 #else
 void multMat(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 #endif
@@ -106,7 +125,7 @@ void multMat(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 
 template <typename T>
 #ifdef ZFP
-void multMat_tiled(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
+void multMat_tiled(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> &AB)
 #else
 void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 #endif
@@ -124,9 +143,9 @@ void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 		{
 			for (k = 0; k < A_n; ++k) // sum across row of A and column of B
 			{
-				for (m = 0; m < TILE_M && (i+m) < A_m; ++m) // sum for all values in tile
+				for (m = 0; m < TILE_M; ++m) // sum for all values in tile
 				{
-					for (n = 0; n < TILE_N && (j+n) < B_n; ++n)
+					for (n = 0; n < TILE_N; ++n)
 					{
 						AB[(i + m) * A_n + (j + n)]  += (A[(i + m) * A_n + k] * B[k * B_n + (j + n)]);
 					}
@@ -152,16 +171,26 @@ DATA_TYPE
 
 int main()
 {
+	printf("A\n");
+	A[0]=1;
+	print_matrix(A,MATRIX_WIDTH,MATRIX_WIDTH);
 	// initialize values
 	init_mat_value(A, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)A_VALUE);
 	init_mat_value(B, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)B_VALUE);
 
-	printf("Iteration,Time,RMSE\n");
+	printf("A\n");
+	print_matrix(A,MATRIX_WIDTH,MATRIX_WIDTH);
+	printf("B\n");
+	print_matrix(B,MATRIX_WIDTH,MATRIX_WIDTH);
 
-	for (int i = 0; i < NTIMES; ++i)
+//	printf("Iteration,Time,RMSE\n");
+
+	//for (int i = 0; i < NTIMES; ++i)
 	{
 		// clear AB
 		init_mat_value(AB, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)0);
+		printf("AB\n");
+		print_matrix(AB,MATRIX_WIDTH,MATRIX_WIDTH);
 
 
 		clock_t begin = clock();
@@ -174,12 +203,14 @@ int main()
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
 		#ifdef ZFP
-		DATA_TYPE rmse = compute_RMSE(AB);
+		printf("AB\n");
+		//print_matrix(AB,MATRIX_WIDTH,MATRIX_WIDTH);
+DATA_TYPE rmse = compute_RMSE(AB);
 		#else 
 		DATA_TYPE rmse = 0;
 		#endif
 
-		printf("%d,%lf,%lf\n", i, elapsed_secs, rmse);
+	//	printf("%d,%lf,%lf\n", i, elapsed_secs, rmse);
 	}
 }
 

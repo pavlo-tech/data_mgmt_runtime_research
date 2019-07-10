@@ -80,8 +80,8 @@ MYFLAGS="-DTILED -DTILE_SIZE=$tile_width -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
 
-g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS tiled_fixed_matmatmult.cpp -o tiled_matmatmult.exe
-g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS tiled_fixed_matmatmult.cpp $LINKFLAGS -o tiled_matmatmult_zfp.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o tiled_matmatmult.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o tiled_matmatmult_zfp.exe
 
 ./tiled_matmatmult.exe > tiled_matmatmult_output.txt
 ./tiled_matmatmult_zfp.exe > tiled_matmatmult_zfp_output.txt
