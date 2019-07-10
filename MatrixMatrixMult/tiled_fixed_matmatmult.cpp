@@ -124,9 +124,9 @@ void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 		{
 			for (k = 0; k < A_n; ++k) // sum across row of A and column of B
 			{
-				for (m = 0; m < TILE_M; ++m) // sum for all values in tile
+				for (m = 0; m < TILE_M && (i+m) < A_m; ++m) // sum for all values in tile
 				{
-					for (n = 0; n < TILE_N; ++n)
+					for (n = 0; n < TILE_N && (j+n) < B_n; ++n)
 					{
 						AB[(i + m) * A_n + (j + n)]  += (A[(i + m) * A_n + k] * B[k * B_n + (j + n)]);
 					}
