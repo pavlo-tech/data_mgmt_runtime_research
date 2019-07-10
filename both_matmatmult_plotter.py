@@ -41,40 +41,69 @@ df = pd.read_csv(("tiled_" if tiled else "")+"matmatmult_df.csv")
 # 3. determine performance difference between 1 and 2.
 # Need Paper-Ready Figures by Monday.
 
-
-width=2048 #[1024, 128, 1536, 2048, 256, 32, 384, 512, 576, 768]  
-
-uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double') & (df['matrix_width'] <= width)]
-#print(uncompressed_df)
-fig = sns.lineplot(x='matrix_width', y='Time', data=uncompressed_df, ci='sd')
-plt.tight_layout()
-#fig.get_figure().savefig("images/"+str(width)+("_tiled_uncompressed.pdf" if tiled else "_uncompressed.pdf"))
-fig.get_figure().savefig("images/"+("tiled_uncompressed.pdf" if tiled else "uncompressed.pdf"))
-plt.clf()
-
+width=1024 #[1024, 128, 1536, 2048, 256, 32, 384, 512, 576, 768]  
 #rate = 64#[1, 16, 2,  32/ 4/  48/ 64/ 8/
 
-
-for rate in df['zfp_rate'].unique():
+if tiled:
 	plt.clf()
-	#default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
-	default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) &\
+	for tile_size in df['tile_size'].unique():
+		uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) & (df['tile_size']==tile_size)]
+		fig = sns.lineplot(x='matrix_width', y='Time', data=uncompressed_df, ci='sd', label=str(tile_size)+" x "+str(tile_size))
+	plt.title("Uncompressed Tiled Matrix-Matrix Multiplication")
+	plt.tight_layout()
+	fig.get_figure().savefig("images/tiled_uncompressed.pdf")
+
+	for rate in df['zfp_rate'].unique():
+		plt.clf()	
+		for tile_size in df['tile_size'].unique():
+			default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) & (df['tile_size']==tile_size) &\
+				(df['zfp_rate'] == rate) & (df['cache_size'] == 0)]
+			fig = sns.lineplot(x='matrix_width', y='Time', data=default_df, ci='sd', label=str(tile_size)+" x "+str(tile_size))
+		plt.title("Tiled Matrix-Matrix Multiplication With Rate "+str(rate))
+		plt.tight_layout()
+		fig.get_figure().savefig("images/tiled_default_cache_rate_"+str(rate)+"compressed.pdf")
+	
+	rate=16
+	for width in df['matrix_width'].unique():
+		plt.clf()
+		for tile_size in df['tile_size'].unique():
+			best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) & (df['tile_size']==tile_size) &\
+    		(df['zfp_rate'] == rate)]
+			fig = sns.lineplot(x='cache_size', y='Time', data=best_df, ci='sd',label=str(tile_size)+" x "+str(tile_size))
+		plt.title("Tiled Matrix-Matrix Multiplication With Rate "+str(rate))
+		plt.tight_layout()
+		fig.get_figure().savefig("images/tiled_width_"+str(width)+"_rate_"+str(rate)+".pdf")
+
+else:
+	uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double') & (df['matrix_width'] <= width)]
+	#print(uncompressed_df)
+	fig = sns.lineplot(x='matrix_width', y='Time', data=uncompressed_df, ci='sd')
+	plt.tight_layout()
+	#fig.get_figure().savefig("images/"+str(width)+("_tiled_uncompressed.pdf" if tiled else "_uncompressed.pdf"))
+	fig.get_figure().savefig("images/uncompressed.pdf")
+	plt.clf()
+
+
+	for rate in df['zfp_rate'].unique():
+		plt.clf()
+		#default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
+		default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) &\
 		(df['zfp_rate'] == rate) & (df['cache_size'] == 0)]
-	#print(default_df)
-	fig = sns.lineplot(x='matrix_width', y='Time', data=default_df, ci='sd')
-	plt.tight_layout()
-	#fig.get_figure().savefig("images/"+str(width)+("_tiled_" if tiled else "_")+str(rate)+".pdf")
-	fig.get_figure().savefig("images/"+("tiled_" if tiled else "")+str(rate)+".pdf")
+		#print(default_df)
+		fig = sns.lineplot(x='matrix_width', y='Time', data=default_df, ci='sd')
+		plt.tight_layout()
+		#fig.get_figure().savefig("images/"+str(width)+("_tiled_" if tiled else "_")+str(rate)+".pdf")
+		fig.get_figure().savefig("images/"+("tiled_" if tiled else "")+str(rate)+".pdf")
 
-rate=1
-for width in df['matrix_width'].unique():
-	plt.clf()
-	best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
-    (df['zfp_rate'] == rate)]
-	#print(best_df)
-	fig = sns.lineplot(x='cache_size', y='Time', data=best_df, ci='sd')
-	plt.tight_layout()
-	fig.get_figure().savefig("images/"+("tiled_" if tiled else "")+str(width)+"_"+str(rate)+".pdf")
+	rate=1
+	for width in df['matrix_width'].unique():
+		plt.clf()
+		best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
+    	(df['zfp_rate'] == rate)]
+		#print(best_df)
+		fig = sns.lineplot(x='cache_size', y='Time', data=best_df, ci='sd')
+		plt.tight_layout()
+		fig.get_figure().savefig("images/"+("tiled_" if tiled else "")+str(width)+"_"+str(rate)+".pdf")
 	
 
 
