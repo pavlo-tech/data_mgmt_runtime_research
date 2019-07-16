@@ -46,12 +46,12 @@ widths=[512, 768, 1024]
 #widths=[256, 512, 1024]
 rates=[4, 8, 16, 32, 48]
 
-for cache_size in untiled_df['cache_size'].unique():
+for cache_size in [0]:
 	plt.clf()
 	for iw, width in enumerate(widths):
 		
 		#plot uncompressed nontiled
-		ucBar_pos=iw*(1+ 2*len(rates)+ 1.5 )*bar_width
+		ucBar_pos=iw*(1+ 2*len(rates)+ 2 )*bar_width
 		mflops=untiled_df.loc[(untiled_df['is_zfp'] == False) & (untiled_df['data_type'] == 'double') & (untiled_df['tiled'] == False) & (untiled_df['matrix_width'] == width)]['Megaflops'].mean()
 		plt.bar(ucBar_pos, mflops, bar_width, color="k")
 	

@@ -1,0 +1,96 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=40:mem=100gb
+#PBS -l walltime=5:00:00
+#PBS -q fthpc
+#PBS -j oe
+#PBS -N test
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+#0PBS -J 0-7
+
+partition_size=420
+
+module load gcc/4.8.1
+module load mpich
+module load python/3.4
+
+
+# init arrays: matrix width scaled by 2^10
+data_type_arr=(double)
+#matrix_width_arr=(1 4 8 16 32)
+matrix_width_arr=(10 12 18 24 48)
+zfp_rate_arr=(1 2 4 8 16 32 48 64)
+#zfp_cache_size_arr=(0 512 1024 2048 4096 8192 16384)
+zfp_cache_size_arr=(12288 14336 20480 24576 28672 32768 40960)
+tile_width_arr=(16 32 64 128 256 512)
+
+
+
+# ((permutations=${#data_type_arr[@]}*${#matrix_width_arr[@]}*${#zfp_rate_arr[@]}*${#zfp_cache_size_arr[@]}*${#tile_width_arr[@]}))
+
+#((start = ${PBS_ARRAY_INDEX} * $partition_size))
+((start = 3 * $partition_size))
+((end = $start + $partition_size))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
+
+# get pos of each dimension using jobfile index
+((x0= $i % ${#data_type_arr[@]}))
+
+((x1= $i / ${#data_type_arr[@]}))
+((x1= $x1 % ${#matrix_width_arr[@]}))
+
+((x2= $i / ${#data_type_arr[@]}))
+((x2= $x2 / ${#matrix_width_arr[@]}))
+((x2= $x2 % ${#zfp_rate_arr[@]}))
+
+((x3= $i / ${#data_type_arr[@]}))
+((x3= $x3 / ${#matrix_width_arr[@]}))
+((x3= $x3 / ${#zfp_rate_arr[@]}))
+((x3= $x3 % ${#zfp_cache_size_arr[@]}))
+
+((x4= $i / ${#data_type_arr[@]}))
+((x4= $x4 / ${#matrix_width_arr[@]}))
+((x4= $x4 / ${#zfp_rate_arr[@]}))
+((x4= $x4 / ${#zfp_cache_size_arr[@]}))
+((x4= $x4 % ${#tile_width_arr[@]}))
+
+# init variables 
+data_type=${data_type_arr[$x0]}
+((matrix_width= ${matrix_width_arr[$x1]} * 2**5))
+zfp_rate=${zfp_rate_arr[$x2]}
+zfp_cache_size=${zfp_cache_size_arr[$x3]}
+tile_width=${tile_width_arr[$x4]}
+
+# make folder to write output to
+output_folder=./test_results/better_tiled_matmatmult/$tile_width/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+mkdir -p $output_folder
+echo $output_folder
+
+# copy source code to working directory
+cp ./MatrixMatrixMult/tiled.cpp $output_folder/
+
+# move to source code folder
+cd $output_folder
+
+# compile compressed version and uncompressed version
+matrix_width+="l"
+MYFLAGS="-DTILED -DTILE_SIZE=$tile_width -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
+LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
+
+#g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS tiled.cpp -o tiled_matmatmult.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS tiled.cpp $LINKFLAGS -o tiled_matmatmult_zfp.exe
+
+#./tiled_matmatmult.exe > tiled_matmatmult_output.txt
+./tiled_matmatmult_zfp.exe > tiled_matmatmult_zfp_output.txt
+
+#rm ./tiled_matmatmult.exe
+rm ./tiled_matmatmult_zfp.exe
+rm ./tiled.cpp
+
+done
+
