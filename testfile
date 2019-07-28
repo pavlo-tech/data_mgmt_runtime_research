@@ -1,0 +1,180 @@
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[134217728]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[134217728]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[134217728]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[268435456]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[268435456]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[268435456]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[536870912]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[536870912]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[536870912]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[1048576]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[4194304]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[8388608]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[16777216]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[33554432]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+rm: cannot remove ‘./stream_c.exe’: No such file or directory
+stream.c: In function ‘init_arrays’:
+stream.c:190:5: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+   a = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+     ^
+stream.c:191:4: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+  b = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+stream.c:192:4: error: incompatible types when assigning to type ‘double[67108864]’ from type ‘double *’
+  c = (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
+    ^
+/var/spool/pbs/mom_priv/jobs/6550906.pbs02.SC: line 80: ./stream_c.exe: No such file or directory
+

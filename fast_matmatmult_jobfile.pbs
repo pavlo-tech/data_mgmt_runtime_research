@@ -1,0 +1,89 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=40:mem=100gb
+#PBS -l walltime=240:00:00
+#PBS -j oe
+#PBS -q fthpc
+#PBS -N fast_matmat
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+#PBS -J 0-3
+
+partition_size=7
+
+module load gcc/4.8.1
+module load mpich
+module load python/3.4
+
+
+# init arrays: matrix width scaled by 2^5
+data_type_arr=(double)
+matrix_width_arr=(4 8 16 32)
+zfp_rate_arr=(1 2 4 8 16 32 64)
+zfp_cache_size_arr=(0)
+
+((start = ${PBS_ARRAY_INDEX} * $partition_size))
+#((start = 1 * $partition_size))
+((end = $start + $partition_size))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
+
+# get pos of each dimension using jobfile index
+((x0= $i % ${#data_type_arr[@]}))
+
+((x1= $i / ${#data_type_arr[@]}))
+((x1= $x1 % ${#matrix_width_arr[@]}))
+
+((x2= $i / ${#data_type_arr[@]}))
+((x2= $x2 / ${#matrix_width_arr[@]}))
+((x2= $x2 % ${#zfp_rate_arr[@]}))
+
+((x3= $i / ${#data_type_arr[@]}))
+((x3= $x3 / ${#matrix_width_arr[@]}))
+((x3= $x3 / ${#zfp_rate_arr[@]}))
+((x3= $x3 % ${#zfp_cache_size_arr[@]}))
+
+# init variables 
+data_type=${data_type_arr[$x0]}
+((matrix_width= ${matrix_width_arr[$x1]} * 2**5))
+zfp_rate=${zfp_rate_arr[$x2]}
+zfp_cache_size=${zfp_cache_size_arr[$x3]}
+
+# make folder to write output to
+output_folder=./test_results/FAST_matmatmult/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+mkdir -p $output_folder
+echo $output_folder
+
+# copy source code to working directory
+cp ./FAST_MatrixMatrixMult/matmatmult.cpp $output_folder/fast_matmatmult.cpp
+cp ./MatrixMatrixMult/matmatmult.cpp $output_folder/matmatmult.cpp
+
+# move to source code folder
+cd $output_folder
+echo $output_folder
+
+# compile compressed version and uncompressed version
+matrix_width+="l"
+MYFLAGS="-DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
+LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
+
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o matmatmult.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS fast_matmatmult.cpp $LINKFLAGS -o fast_matmatmult_zfp.exe
+g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o slow_matmatmult_zfp.exe
+
+rm ./matmatmult.cpp
+rm ./fast_matmatmult.cpp
+
+./matmatmult.exe > matmatmult_output.txt
+./fast_matmatmult_zfp.exe > fast_matmatmult_zfp_output.txt
+./slow_matmatmult_zfp.exe > slow_matmatmult_zfp_output.txt
+
+rm ./matmatmult.exe
+rm ./fast_matmatmult_zfp.exe
+rm ./slow_matmatmult_zfp.exe
+
+done
+

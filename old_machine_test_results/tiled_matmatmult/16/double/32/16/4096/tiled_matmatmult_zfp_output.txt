@@ -1,0 +1,42 @@
+cache lines=32
+cache lines=32
+cache lines=32
+Iteration,Time,RMSE
+cache lines=2
+cache lines=2
+cache R1=32704 R2=0 RM=64 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=32640 R2=0 RM=128 RB=0 W1=960 W2=0 WM=64 WB=64
+cache lines=2
+cache R1=960 R2=0 RM=64 RB=0 W1=33664 W2=0 WM=128 WB=128
+0,0.000000,0.000000
+cache lines=2
+cache lines=2
+cache R1=32704 R2=0 RM=64 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=32640 R2=0 RM=128 RB=0 W1=960 W2=0 WM=64 WB=64
+cache lines=2
+cache R1=960 R2=0 RM=64 RB=0 W1=67328 W2=0 WM=256 WB=256
+1,0.000000,0.000000
+cache lines=2
+cache lines=2
+cache R1=32704 R2=0 RM=64 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=32640 R2=0 RM=128 RB=0 W1=960 W2=0 WM=64 WB=64
+cache lines=2
+cache R1=960 R2=0 RM=64 RB=0 W1=100992 W2=0 WM=384 WB=384
+2,0.000000,0.000000
+cache lines=2
+cache lines=2
+cache R1=32704 R2=0 RM=64 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=32640 R2=0 RM=128 RB=0 W1=960 W2=0 WM=64 WB=64
+cache lines=2
+cache R1=960 R2=0 RM=64 RB=0 W1=134656 W2=0 WM=512 WB=512
+3,0.000000,0.000000
+cache lines=2
+cache lines=2
+cache R1=32704 R2=0 RM=64 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=32640 R2=0 RM=128 RB=0 W1=960 W2=0 WM=64 WB=64
+cache lines=2
+cache R1=960 R2=0 RM=64 RB=0 W1=168320 W2=0 WM=640 WB=640
+4,0.000000,0.000000
+cache R1=0 R2=0 RM=0 RB=0 W1=168320 W2=0 WM=640 WB=640
+cache R1=0 R2=0 RM=0 RB=0 W1=960 W2=0 WM=64 WB=64
+cache R1=0 R2=0 RM=0 RB=0 W1=960 W2=0 WM=64 WB=64

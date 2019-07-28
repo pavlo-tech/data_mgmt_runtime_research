@@ -66,8 +66,11 @@ print(allVals)
 allVals['Speedup'] = allVals['Default Cache Time'] / allVals['Best Time']
 print(allVals)
 
-for rate in allVals['zfp_rate'].unique():
+for rate in [4, 8, 16, 32, 48]:
 	fig=sns.lineplot(x='matrix_width',y='Speedup',data=allVals[(allVals['zfp_rate'] == rate) & (allVals['matrix_width'] <= 600) ], ci='sd', label=str(rate))
+plt.ylabel('Speedup over Default ZFP')
+plt.ylabel('n')
+plt.legend(title="ZFP Rate")
 plt.tight_layout()
 plt.savefig("images/Speedup.pdf")
 

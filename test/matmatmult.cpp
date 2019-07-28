@@ -98,117 +98,25 @@ T compute_RMSE(zfp::array2<T> matrix)
 }
 #endif
 
-template <typename T>
-#ifdef ZFP
-void multMat(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
-#else
-void multMat(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
-#endif
-{
-	/*A_n must = B_m*/
-
-	int i,j,k;
-	T sum;
-
-	for (i = 0; i < A_m; ++i) // for each row of A
-	{
-		for (j = 0; j < B_n; ++j) // for each col of B
-		{
-			for (sum=0, k = 0; k < A_n; ++k) // sum across row of A and column of B
-			{
-				sum += (A[i * A_n + k] * B[k * B_n + j]);
-			}
-			AB[i * A_n + j] = sum;
-		}
-	}
-}
-
-template <typename T>
-#ifdef ZFP
-void multMat_tiled(zfp::array2<T> A, int A_m, int A_n, zfp::array2<T> B, int B_m, int B_n, zfp::array2<T> AB)
-#else
-void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
-#endif
-{
-	/* AB must be memset to 0 */
-	/* A_n must = B_m */
-	/* A_m must be divisible by tile_m */
-	/* B_n must be divisible by tile_n */
-
-	int i,j,k,m,n;
-
-	for (i = 0; i < A_m; i += TILE_M) // for each row of A
-	{
-		for (j = 0; j < B_n; j += TILE_N) // for each col of B
-		{
-			for (k = 0; k < A_n; ++k) // sum across row of A and column of B
-			{
-				for (m = 0; m < TILE_M; ++m) // sum for all values in tile
-				{
-					for (n = 0; n < TILE_N; ++n)
-					{
-						AB[(i + m) * A_n + (j + n)]  += (A[(i + m) * A_n + k] * B[k * B_n + (j + n)]);
-					}
-				}
-			}
-		}
-	}
-}
 
 
-// declare variables
-#ifdef ZFP
-zfp::array2<DATA_TYPE> 
-		A(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE),
-		B(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE),
-		AB(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE);
-#else
-DATA_TYPE 
-		A[MATRIX_WIDTH * MATRIX_WIDTH],
-		B[MATRIX_WIDTH * MATRIX_WIDTH],
-		AB[MATRIX_WIDTH * MATRIX_WIDTH];
-#endif
 
 int main()
 {
+	using namespace zfp;
+ 	array2<DATA_TYPE> A(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE);
+		//B(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE),
+		//AB(MATRIX_WIDTH, MATRIX_WIDTH, RATE, 0, CSIZE);
+	
 	// initialize values
 	init_mat_value(A, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)A_VALUE);
-	init_mat_value(B, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)B_VALUE);
+	//init_mat_value(B, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)B_VALUE);
 
 	printf("A\n");
 	print_matrix(A,MATRIX_WIDTH,MATRIX_WIDTH);
-	printf("B\n");
-	print_matrix(B,MATRIX_WIDTH,MATRIX_WIDTH);
+	//printf("B\n");
+	//print_matrix(B,MATRIX_WIDTH,MATRIX_WIDTH);
 
-//	printf("Iteration,Time,RMSE\n");
-
-	//for (int i = 0; i < NTIMES; ++i)
-	{
-		// clear AB
-		init_mat_value(AB, MATRIX_WIDTH, MATRIX_WIDTH, (DATA_TYPE)0);
-		printf("AB\n");
-		print_matrix(AB,MATRIX_WIDTH,MATRIX_WIDTH);
-
-
-		clock_t begin = clock();
-		#ifdef TILED
-		multMat_tiled(A, MATRIX_WIDTH, MATRIX_WIDTH, B, MATRIX_WIDTH, MATRIX_WIDTH, AB);
-		#else
-		multMat(A, MATRIX_WIDTH, MATRIX_WIDTH, B, MATRIX_WIDTH, MATRIX_WIDTH, AB);
-		#endif
-		clock_t end = clock();
-		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-
-		#ifdef ZFP
-		printf("AB\n");
-		print_matrix(AB,MATRIX_WIDTH,MATRIX_WIDTH);
-//DATA_TYPE rmse = compute_RMSE(AB);
-		#else 
-		DATA_TYPE rmse = 0;
-		#endif
-
-	//	printf("%d,%lf,%lf\n", i, elapsed_secs, rmse);
-	}
 }
 
 

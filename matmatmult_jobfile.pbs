@@ -8,7 +8,7 @@
 #PBS -M ptriant@g.clemson.edu
 #0PBS -J 0-1
 
-partition_size=140
+partition_size=126
 
 module load gcc/4.8.1
 module load mpich
@@ -19,14 +19,16 @@ module load python/3.4
 data_type_arr=(double)
 #matrix_width_arr=(1 4 8 16 32 64 128 256 512)
 # DO FOR TILED AS WELL!!!!
-matrix_width_arr=(1 4 8 16 32)
-#matrix_width_arr=(10 12 18 24 48)
-zfp_rate_arr=(1 2 4 8 16 32 48 64)
+matrix_width_arr=(64 32)
+#matrix_width_arr=(1 4 8 10 12 16)
+#matrix_width_arr=(2 6 14 24 28 32)
+zfp_rate_arr=(1 2 4 8 16 32 48)
+zfp_cache_size_arr=(0 512 1024 2048 4096 8192 16384 32768 1048576)
 #zfp_cache_size_arr=(0 512 1024 2048 4096 8192 16384)
-zfp_cache_size_arr=(12288 14336 20480 24576 28672 32768 40960)
+#zfp_cache_size_arr=(12288 14336 20480 24576 28672 32768 40960)
 
 #((start = ${PBS_ARRAY_INDEX} * $partition_size))
-((start = 1 * $partition_size))
+((start = 0 * $partition_size))
 ((end = $start + $partition_size))
 
 for ((i=$start; i < $end; i++))
@@ -56,7 +58,7 @@ zfp_rate=${zfp_rate_arr[$x2]}
 zfp_cache_size=${zfp_cache_size_arr[$x3]}
 
 # make folder to write output to
-output_folder=./test_results/matmatmult/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+output_folder=./test_results/matmatmult/DEFAULT/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
 mkdir -p $output_folder
 echo $output_folder
 
@@ -69,6 +71,7 @@ echo $output_folder
 
 # compile compressed version and uncompressed version
 matrix_width+="l"
+#MYFLAGS="-DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_FAST_HASH -DZFP_WITH_CACHE_TWOWAY"
 MYFLAGS="-DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"

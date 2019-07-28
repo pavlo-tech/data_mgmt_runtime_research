@@ -1,0 +1,40 @@
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 536870912 (elements), Offset = 0 (elements)
+Memory per array = 4096.0 MiB (= 4.0 GiB).
+Total memory required = 12288.0 MiB (= 12.0 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 46479490 microseconds.
+   (= 46479490 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:             137.8    63.823131    62.325832    64.641059
+Scale:            138.6    63.606266    61.998718    64.705832
+Add:              160.3    82.935430    80.399987    84.915929
+Triad:            158.6    83.523934    81.254573    84.958483
+-------------------------------------------------------------
+Failed Validation on array a[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 1.153301e+12, AvgAbsErr: 4.281400e+04, AvgRelAbsErr: 3.712301e-08
+     For array a[], 536870912 errors were found.
+Failed Validation on array b[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 2.306602e+11, AvgAbsErr: 5.286000e+03, AvgRelAbsErr: 2.291683e-08
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array b[], 536870912 errors were found.
+Failed Validation on array c[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 3.075469e+11, AvgAbsErr: 7.048000e+03, AvgRelAbsErr: 2.291683e-08
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array c[], 536870912 errors were found.
+-------------------------------------------------------------

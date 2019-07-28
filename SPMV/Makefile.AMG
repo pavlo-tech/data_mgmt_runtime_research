@@ -1,0 +1,25 @@
+
+LIBS = -L/usr/lib/ -llapack -lblas -lm
+CFLAGS = -I.. -c -g -Wall -DVERIFY_SYSTEM
+CC = gcc
+
+
+
+all: AMG
+
+AMG: mmio.o util.o solve.o main.o
+	$(CC) -o AMG.out mmio.o util.o solve.o main.o $(LIBS)
+
+solve.o: solve.c
+	$(CC) $(CFLAGS) solve.c
+
+util.o: util.c
+	$(CC) $(CFLAGS) util.c
+
+mmio.o: mmio.c
+	$(CC) $(CFLAGS) mmio.c
+
+
+clean:
+	-rm -f AMG.out
+	-rm -f *.o

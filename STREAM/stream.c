@@ -185,17 +185,6 @@ static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
 
 //static STREAM_TYPE *a, *b, *c; 
 
-void init_arrays()
-{
- 	a	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
-	b	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
-	c	= (STREAM_TYPE*)aligned_alloc(sizeof(STREAM_TYPE), sizeof(STREAM_TYPE) * (size_t)(STREAM_ARRAY_SIZE+OFFSET));
-}
-
-void delete_arrays()
-{
-	free(a); free(b); free(c);
-}
 
 static double	avgtime[4] = {0}, maxtime[4] = {0},
 		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};

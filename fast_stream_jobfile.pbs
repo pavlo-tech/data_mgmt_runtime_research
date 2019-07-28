@@ -1,0 +1,91 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=24:mem=100gb
+#PBS -l walltime=72:00:00
+#PBS -j oe
+#PBS -N fast_stream
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+#PBS -J 0-6
+
+module load gcc/4.8.1
+module load mpich
+module load python/3.4
+
+partition_size=1
+
+
+# init arrays: stream_size in MB
+stream_type_arr=(double)
+stream_size_arr=(512)
+zfp_rate_arr=(1 2 4 8 16 32 64)
+#zfp_cache_size_arr=(0 1 2 4 8 16 32)
+zfp_cache_size_arr=(0)
+
+((start = ${PBS_ARRAY_INDEX} * $partition_size))
+((end = $start + $partition_size))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
+
+
+# get pos of each dimension using jobfile index
+((x0= $i % ${#stream_type_arr[@]}))
+
+((x1= $i / ${#stream_type_arr[@]}))
+((x1= $x1 % ${#stream_size_arr[@]}))
+
+((x2= $i / ${#stream_type_arr[@]}))
+((x2= $x2 / ${#stream_size_arr[@]}))
+((x2= $x2 % ${#zfp_rate_arr[@]}))
+
+((x3= $i / ${#stream_type_arr[@]}))
+((x3= $x3 / ${#stream_size_arr[@]}))
+((x3= $x3 / ${#zfp_rate_arr[@]}))
+((x3= $x3 % ${#zfp_cache_size_arr[@]}))
+
+# init variables
+stream_type=${stream_type_arr[$x0]}
+((stream_size= ${stream_size_arr[$x1]} * 2**20))
+zfp_rate=${zfp_rate_arr[$x2]}
+zfp_cache_size=${zfp_cache_size_arr[$x3]}
+
+# not useful for now
+#if [ $stream_type == "float" ]; then num_bytes_per_val=4; else num_bytes_per_val=8; fi;
+
+# make folder to write output to
+output_folder=./old_machine_test_results/FAST_STREAM/$stream_type/$stream_size/$zfp_rate/$zfp_cache_size
+mkdir -p $output_folder
+
+# copy source code to working directory
+cp ./FAST_STREAM/stream.c $output_folder/
+cp ./FAST_STREAM/stream_zfp_slow.cpp $output_folder/
+cp ./FAST_STREAM/stream_zfp_fast.cpp $output_folder/
+
+# move to source code folder
+cd $output_folder
+
+# compile compressed version and uncompressed version
+MYFLAGS="-DSTREAM_TYPE=$stream_type -DSTREAM_ARRAY_SIZE=$stream_size -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
+LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
+gcc -std=c11 -O3 -mcmodel=large $MYFLAGS stream.c -o stream_c.exe
+g++ -std=c++98 -w -O3 -mcmodel=large -fPIC -pedantic $INCFLAGS $MYFLAGS stream_zfp_fast.cpp $LINKFLAGS -o stream_zfp_fast.exe
+g++ -std=c++98 -w -O3 -mcmodel=large -fPIC -pedantic $INCFLAGS $MYFLAGS stream_zfp_slow.cpp $LINKFLAGS -o stream_zfp_slow.exe
+
+rm ./stream.c
+rm ./stream_zfp_fast.cpp
+rm ./stream_zfp_slow.cpp
+
+./stream_c.exe > stream_output.txt
+./stream_zfp_fast.exe > zfp_fast_output.txt
+./stream_zfp_slow.exe > zfp_slow_output.txt
+
+
+rm ./stream_c.exe
+rm ./stream_zfp_fast.exe
+rm ./stream_zfp_slow.exe
+
+done
+

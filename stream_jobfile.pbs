@@ -1,41 +1,44 @@
 #!/bin/bash
 #PBS -l select=1:ncpus=40:mem=100gb
-#PBS -l walltime=48:00:00
+#PBS -l walltime=240:00:00
 #PBS -j oe
 #PBS -q fthpc
-#PBS -N xcompress
+#PBS -N stream
 #PBS -m ae
 #PBS -M ptriant@g.clemson.edu
-#PBS -J 756-1007
 
-#0PBS -J 0-251
-#0PBS -J 252-503
-#0PBS -J 504-755
-#0PBS -J 756-1007
 
 module load gcc/4.8.1
 module load mpich
 module load python/3.4
 
-cd $PBS_O_WORKDIR
+partition_size=567
 
 # init arrays: stream_size in MB
-stream_type_arr=(float double)
+stream_type_arr=(double)
 stream_size_arr=(1 4 8 16 32 64 128 256 512)
-zfp_rate_arr=(4 8 16 32 64 128 256 512)
-zfp_cache_size_arr=(0 1 2 4 8 16 32)
+zfp_rate_arr=(1 2 4 8 16 32 48)
+zfp_cache_size_arr=(0 512 1024 2048 4096 8192 16384 32768 1048576)
+
+((start = 0 * $partition_size))
+((end = $start + $partition_size))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
 
 # get pos of each dimension using jobfile index
-((x0= ${PBS_ARRAY_INDEX} % ${#stream_type_arr[@]}))
+((x0= $i % ${#stream_type_arr[@]}))
 
-((x1= ${PBS_ARRAY_INDEX} / ${#stream_type_arr[@]}))
+((x1= $i / ${#stream_type_arr[@]}))
 ((x1= $x1 % ${#stream_size_arr[@]}))
 
-((x2= ${PBS_ARRAY_INDEX} / ${#stream_type_arr[@]}))
+((x2= $i / ${#stream_type_arr[@]}))
 ((x2= $x2 / ${#stream_size_arr[@]}))
 ((x2= $x2 % ${#zfp_rate_arr[@]}))
 
-((x3= ${PBS_ARRAY_INDEX} / ${#stream_type_arr[@]}))
+((x3= $i / ${#stream_type_arr[@]}))
 ((x3= $x3 / ${#stream_size_arr[@]}))
 ((x3= $x3 / ${#zfp_rate_arr[@]}))
 ((x3= $x3 % ${#zfp_cache_size_arr[@]}))
@@ -50,7 +53,7 @@ zfp_cache_size=${zfp_cache_size_arr[$x3]}
 #if [ $stream_type == "float" ]; then num_bytes_per_val=4; else num_bytes_per_val=8; fi;
 
 # make folder to write output to
-output_folder=./test_results/STREAM/$stream_type/$stream_size/$zfp_rate/$zfp_cache_size
+output_folder=./test_results/STREAM/FAST_AND_TWOWAY/$stream_type/$stream_size/$zfp_rate/$zfp_cache_size
 mkdir -p $output_folder
 
 # copy source code to working directory
@@ -61,7 +64,8 @@ cp ./STREAM/stream_zfp.cpp $output_folder/
 cd $output_folder
 
 # compile compressed version and uncompressed version
-MYFLAGS="-DSTREAM_TYPE=$stream_type -DSTREAM_ARRAY_SIZE=$stream_size -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+MYFLAGS="-DSTREAM_TYPE=$stream_type -DSTREAM_ARRAY_SIZE=$stream_size -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_FAST_HASH -DZFP_WITH_CACHE_TWOWAY"
+#MYFLAGS="-DSTREAM_TYPE=$stream_type -DSTREAM_ARRAY_SIZE=$stream_size -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_TWOWAY"
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
 gcc -std=c11 -O3 -mcmodel=large $MYFLAGS stream.c -o stream_c.exe
@@ -73,5 +77,5 @@ g++ -std=c++98 -w -O3 -mcmodel=large -fPIC -pedantic $INCFLAGS $MYFLAGS stream_z
 rm ./stream_c.exe
 rm ./stream_zfp_c.exe
 
-
+done
 
