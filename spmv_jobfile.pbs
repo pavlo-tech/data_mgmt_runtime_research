@@ -1,0 +1,94 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=40:mem=100gb
+#PBS -l walltime=240:00:00
+#PBS -j oe
+#PBS -q fthpc
+#PBS -N spmv_nnMats_def
+#PBS -m ae
+#PBS -M ptriant@g.clemson.edu
+
+cachepolicy_dirname=DEFAULT
+#DEFAULT TWOWAY FAST_AND_TWOWAY
+cachepolicy_flags=""
+#"-DZFP_WITH_CACHE_TWOWAY -DZFP_WITH_CACHE_FAST_HASH"
+
+module load gcc/4.8.1
+module load mpich
+module load python/3.4
+
+data_type_arr=(double)
+#matrix_arr=(A0 A1 A2 A3)
+#matrix_arr=(CurlCurl_4 FullChip mawi_201512020330 sx-stackoverflow)
+#matrix_arr=(1138_bus ASIC_680k kron_g500-logn17 A0)
+matrix_arr=(sx-stackoverflow_temporal_edges roadNet-CA roadNet-TX twitter7)
+zfp_rate_arr=(4 8 16 32)
+zfp_cache_size_arr=(0 1024 32768 1048576)
+
+partition_size=64
+((start = 0 * $partition_size))
+((end = $start + $partition_size))
+
+for ((i=$start; i < $end; i++))
+do
+
+cd $PBS_O_WORKDIR
+((x0= $i % ${#data_type_arr[@]}))
+
+((x1= $i / ${#data_type_arr[@]}))
+((x1= $x1 % ${#matrix_arr[@]}))
+
+((x2= $i / ${#data_type_arr[@]}))
+((x2= $x2 / ${#matrix_arr[@]}))
+((x2= $x2 % ${#zfp_rate_arr[@]}))
+
+((x3= $i / ${#data_type_arr[@]}))
+((x3= $x3 / ${#matrix_arr[@]}))
+((x3= $x3 / ${#zfp_rate_arr[@]}))
+((x3= $x3 % ${#zfp_cache_size_arr[@]}))
+
+# init variables 
+data_type=${data_type_arr[$x0]}
+matrix_name=${matrix_arr[$x1]}
+zfp_rate=${zfp_rate_arr[$x2]}
+zfp_cache_size=${zfp_cache_size_arr[$x3]}
+
+# create working directory for this iteration, move into it
+output_folder=./test_results/spmv/$cachepolicy_dirname/$data_type/$matrix_name/$zfp_rate/$zfp_cache_size
+mkdir -p $output_folder
+echo $output_folder
+cp ./spmv/util.h ./$output_folder/
+cp ./spmv/util.cpp ./$output_folder/
+cp ./spmv/init.h ./$output_folder/
+cp ./spmv/init.c ./$output_folder/
+cp ./spmv/mmio.h ./$output_folder/
+cp ./spmv/mmio.c ./$output_folder/
+cp ./spmv/main.cpp ./$output_folder/
+cd $output_folder
+
+#compile both versions
+MYFLAGS="-DZFP -DDATA_TYPE=$data_type -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size $cachepolicy_flags"
+INC="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
+LZFP="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
+LIBS="-L/usr/lib/ -lm -lstdc++ -ldl"
+CC="g++ -std=c++98"
+CFLAGS="-w -O3 -fPIC -pedantic -mcmodel=large -g"
+$CC $CFLAGS $INC $MYFLAGS -c util.cpp $LZFP
+$CC $CFLAGS $INC $MYFLAGS -c init.c $LZFP
+$CC $CFLAGS $INC $MYFLAGS -c mmio.c $LZFP
+$CC $CFLAGS $INC $MYFLAGS -c main.cpp $LZFP
+$CC $CFLAGS $INC $MYFLAGS -o SpMV_zfp.exe mmio.o util.o main.o $LZFP
+#$CC $CFLAGS $INC $MYFLAGS -o SpMV_zfp.exe mmio.o util.o main.o $LIBS $LZFP
+$CC $CFLAGS -c util.cpp
+$CC $CFLAGS -c init.c
+$CC $CFLAGS -c mmio.c
+$CC $CFLAGS -c main.cpp
+$CC -o SpMV.exe mmio.o util.o main.o
+#$CC -o SpMV.exe mmio.o util.o main.o $LIBS
+
+./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+
+rm ./util.h ./util.cpp ./init.h ./init.c ./mmio.c ./main.cpp ./mmio.h
+rm ./util.o ./init.o ./mmio.o ./main.o ./SpMV_zfp.exe ./SpMV.exe
+done
+

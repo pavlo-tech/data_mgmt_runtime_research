@@ -1,0 +1,19 @@
+./old_machine_test_results/matmatmult_cachestats/double/1024/4/16384
+./old_machine_test_results/matmatmult_cachestats/double/1024/4/20480
+./old_machine_test_results/matmatmult_cachestats/double/1024/4/65536
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=50gb,ncpus=20,walltime=72:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=98,cput=00:03:10,mem=11808kb,ncpus=20,vmem=244276kb,walltime=00:03:10
+ 
+ 

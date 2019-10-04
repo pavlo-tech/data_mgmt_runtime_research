@@ -1,0 +1,784 @@
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/0
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13332 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x00000000021ac040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x152f57ba3609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x152f57b44495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1368281                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1368281                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1368281                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/0/SpMV.exe
+021ac000-021cd000 rw-p 00000000 00:00 0                                  [heap]
+152f50000000-152f50021000 rw-p 00000000 00:00 0 
+152f50021000-152f54000000 ---p 00000000 00:00 0 
+152f57b22000-152f57ce4000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152f57ce4000-152f57ee4000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152f57ee4000-152f57ee8000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152f57ee8000-152f57eea000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152f57eea000-152f57eef000 rw-p 00000000 00:00 0 
+152f57eef000-152f57f04000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152f57f04000-152f58104000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152f58104000-152f58105000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152f58105000-152f58206000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152f58206000-152f58405000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152f58405000-152f58406000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152f58406000-152f58407000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152f58407000-152f584f2000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152f584f2000-152f586f1000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152f586f1000-152f586f9000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152f586f9000-152f586fb000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152f586fb000-152f58710000 rw-p 00000000 00:00 0 
+152f58710000-152f58732000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152f5890d000-152f58912000 rw-p 00000000 00:00 0 
+152f5892c000-152f5892e000 rw-p 00000000 00:00 0 
+152f5892f000-152f58931000 rw-p 00000000 00:00 0 
+152f58931000-152f58932000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152f58932000-152f58933000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152f58933000-152f58934000 rw-p 00000000 00:00 0 
+7ffea0e61000-7ffea0e82000 rw-p 00000000 00:00 0                          [stack]
+7ffea0f2e000-7ffea0f31000 r--p 00000000 00:00 0                          [vvar]
+7ffea0f31000-7ffea0f33000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13333 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/4/0
+./test_results/spmv/DEFAULT/double/roadNet-TX/4/0
+./test_results/spmv/DEFAULT/double/twitter7/4/0
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/0
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13507 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000000bf5040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14f3102f6609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14f310297495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1369900                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1369900                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1369900                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/0/SpMV.exe
+00bf5000-00c16000 rw-p 00000000 00:00 0                                  [heap]
+14f30c000000-14f30c021000 rw-p 00000000 00:00 0 
+14f30c021000-14f310000000 ---p 00000000 00:00 0 
+14f310275000-14f310437000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f310437000-14f310637000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f310637000-14f31063b000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f31063b000-14f31063d000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f31063d000-14f310642000 rw-p 00000000 00:00 0 
+14f310642000-14f310657000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f310657000-14f310857000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f310857000-14f310858000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f310858000-14f310959000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f310959000-14f310b58000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f310b58000-14f310b59000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f310b59000-14f310b5a000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f310b5a000-14f310c45000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f310c45000-14f310e44000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f310e44000-14f310e4c000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f310e4c000-14f310e4e000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f310e4e000-14f310e63000 rw-p 00000000 00:00 0 
+14f310e63000-14f310e85000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f311060000-14f311065000 rw-p 00000000 00:00 0 
+14f31107f000-14f311081000 rw-p 00000000 00:00 0 
+14f311082000-14f311084000 rw-p 00000000 00:00 0 
+14f311084000-14f311085000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f311085000-14f311086000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f311086000-14f311087000 rw-p 00000000 00:00 0 
+7ffd465cf000-7ffd465f0000 rw-p 00000000 00:00 0                          [stack]
+7ffd465f4000-7ffd465f7000 r--p 00000000 00:00 0                          [vvar]
+7ffd465f7000-7ffd465f9000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13508 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/8/0
+./test_results/spmv/DEFAULT/double/roadNet-TX/8/0
+./test_results/spmv/DEFAULT/double/twitter7/8/0
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/0
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13683 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001fd6040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x153d53d0b609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x153d53cac495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1369979                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1369979                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1369979                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/0/SpMV.exe
+01fd6000-01ff7000 rw-p 00000000 00:00 0                                  [heap]
+153d4c000000-153d4c021000 rw-p 00000000 00:00 0 
+153d4c021000-153d50000000 ---p 00000000 00:00 0 
+153d53c8a000-153d53e4c000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+153d53e4c000-153d5404c000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+153d5404c000-153d54050000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+153d54050000-153d54052000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+153d54052000-153d54057000 rw-p 00000000 00:00 0 
+153d54057000-153d5406c000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153d5406c000-153d5426c000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153d5426c000-153d5426d000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153d5426d000-153d5436e000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+153d5436e000-153d5456d000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+153d5456d000-153d5456e000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+153d5456e000-153d5456f000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+153d5456f000-153d5465a000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153d5465a000-153d54859000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153d54859000-153d54861000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153d54861000-153d54863000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153d54863000-153d54878000 rw-p 00000000 00:00 0 
+153d54878000-153d5489a000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+153d54a75000-153d54a7a000 rw-p 00000000 00:00 0 
+153d54a94000-153d54a96000 rw-p 00000000 00:00 0 
+153d54a97000-153d54a99000 rw-p 00000000 00:00 0 
+153d54a99000-153d54a9a000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+153d54a9a000-153d54a9b000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+153d54a9b000-153d54a9c000 rw-p 00000000 00:00 0 
+7ffc47310000-7ffc47331000 rw-p 00000000 00:00 0                          [stack]
+7ffc473fa000-7ffc473fd000 r--p 00000000 00:00 0                          [vvar]
+7ffc473fd000-7ffc473ff000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13684 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/16/0
+./test_results/spmv/DEFAULT/double/roadNet-TX/16/0
+./test_results/spmv/DEFAULT/double/twitter7/16/0
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/0
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13855 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001919040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14a54d64a609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14a54d5eb495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370052                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370052                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370052                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/0/SpMV.exe
+01919000-0193a000 rw-p 00000000 00:00 0                                  [heap]
+14a548000000-14a548021000 rw-p 00000000 00:00 0 
+14a548021000-14a54c000000 ---p 00000000 00:00 0 
+14a54d5c9000-14a54d78b000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14a54d78b000-14a54d98b000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14a54d98b000-14a54d98f000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14a54d98f000-14a54d991000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14a54d991000-14a54d996000 rw-p 00000000 00:00 0 
+14a54d996000-14a54d9ab000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14a54d9ab000-14a54dbab000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14a54dbab000-14a54dbac000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14a54dbac000-14a54dcad000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14a54dcad000-14a54deac000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14a54deac000-14a54dead000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14a54dead000-14a54deae000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14a54deae000-14a54df99000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14a54df99000-14a54e198000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14a54e198000-14a54e1a0000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14a54e1a0000-14a54e1a2000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14a54e1a2000-14a54e1b7000 rw-p 00000000 00:00 0 
+14a54e1b7000-14a54e1d9000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14a54e3b4000-14a54e3b9000 rw-p 00000000 00:00 0 
+14a54e3d3000-14a54e3d5000 rw-p 00000000 00:00 0 
+14a54e3d6000-14a54e3d8000 rw-p 00000000 00:00 0 
+14a54e3d8000-14a54e3d9000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14a54e3d9000-14a54e3da000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14a54e3da000-14a54e3db000 rw-p 00000000 00:00 0 
+7ffc37c29000-7ffc37c4a000 rw-p 00000000 00:00 0                          [stack]
+7ffc37d8b000-7ffc37d8e000 r--p 00000000 00:00 0                          [vvar]
+7ffc37d8e000-7ffc37d90000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 13856 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/32/0
+./test_results/spmv/DEFAULT/double/roadNet-TX/32/0
+./test_results/spmv/DEFAULT/double/twitter7/32/0
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1024
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14027 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x000000000060e040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14ba01522609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14ba014c3495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370124                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1024/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370124                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1024/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370124                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1024/SpMV.exe
+0060e000-0062f000 rw-p 00000000 00:00 0                                  [heap]
+14b9fc000000-14b9fc021000 rw-p 00000000 00:00 0 
+14b9fc021000-14ba00000000 ---p 00000000 00:00 0 
+14ba014a1000-14ba01663000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ba01663000-14ba01863000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ba01863000-14ba01867000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ba01867000-14ba01869000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ba01869000-14ba0186e000 rw-p 00000000 00:00 0 
+14ba0186e000-14ba01883000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ba01883000-14ba01a83000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ba01a83000-14ba01a84000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ba01a84000-14ba01b85000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ba01b85000-14ba01d84000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ba01d84000-14ba01d85000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ba01d85000-14ba01d86000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ba01d86000-14ba01e71000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ba01e71000-14ba02070000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ba02070000-14ba02078000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ba02078000-14ba0207a000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ba0207a000-14ba0208f000 rw-p 00000000 00:00 0 
+14ba0208f000-14ba020b1000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ba0228c000-14ba02291000 rw-p 00000000 00:00 0 
+14ba022ab000-14ba022ad000 rw-p 00000000 00:00 0 
+14ba022ae000-14ba022b0000 rw-p 00000000 00:00 0 
+14ba022b0000-14ba022b1000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ba022b1000-14ba022b2000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ba022b2000-14ba022b3000 rw-p 00000000 00:00 0 
+7ffd73f6a000-7ffd73f8b000 rw-p 00000000 00:00 0                          [stack]
+7ffd73fa1000-7ffd73fa4000 r--p 00000000 00:00 0                          [vvar]
+7ffd73fa4000-7ffd73fa6000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14029 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/4/1024
+./test_results/spmv/DEFAULT/double/roadNet-TX/4/1024
+./test_results/spmv/DEFAULT/double/twitter7/4/1024
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1024
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14200 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x00000000008c1040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x150d1691e609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x150d168bf495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370195                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1024/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370195                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1024/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370195                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1024/SpMV.exe
+008c1000-008e2000 rw-p 00000000 00:00 0                                  [heap]
+150d10000000-150d10021000 rw-p 00000000 00:00 0 
+150d10021000-150d14000000 ---p 00000000 00:00 0 
+150d1689d000-150d16a5f000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+150d16a5f000-150d16c5f000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+150d16c5f000-150d16c63000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+150d16c63000-150d16c65000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+150d16c65000-150d16c6a000 rw-p 00000000 00:00 0 
+150d16c6a000-150d16c7f000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+150d16c7f000-150d16e7f000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+150d16e7f000-150d16e80000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+150d16e80000-150d16f81000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+150d16f81000-150d17180000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+150d17180000-150d17181000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+150d17181000-150d17182000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+150d17182000-150d1726d000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+150d1726d000-150d1746c000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+150d1746c000-150d17474000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+150d17474000-150d17476000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+150d17476000-150d1748b000 rw-p 00000000 00:00 0 
+150d1748b000-150d174ad000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+150d17688000-150d1768d000 rw-p 00000000 00:00 0 
+150d176a7000-150d176a9000 rw-p 00000000 00:00 0 
+150d176aa000-150d176ac000 rw-p 00000000 00:00 0 
+150d176ac000-150d176ad000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+150d176ad000-150d176ae000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+150d176ae000-150d176af000 rw-p 00000000 00:00 0 
+7ffd3c879000-7ffd3c89a000 rw-p 00000000 00:00 0                          [stack]
+7ffd3c8eb000-7ffd3c8ee000 r--p 00000000 00:00 0                          [vvar]
+7ffd3c8ee000-7ffd3c8f0000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14201 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/8/1024
+./test_results/spmv/DEFAULT/double/roadNet-TX/8/1024
+./test_results/spmv/DEFAULT/double/twitter7/8/1024
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1024
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14372 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x00000000024d1040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14f155819609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14f1557ba495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370267                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1024/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370267                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1024/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370267                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1024/SpMV.exe
+024d1000-024f2000 rw-p 00000000 00:00 0                                  [heap]
+14f150000000-14f150021000 rw-p 00000000 00:00 0 
+14f150021000-14f154000000 ---p 00000000 00:00 0 
+14f155798000-14f15595a000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f15595a000-14f155b5a000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f155b5a000-14f155b5e000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f155b5e000-14f155b60000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14f155b60000-14f155b65000 rw-p 00000000 00:00 0 
+14f155b65000-14f155b7a000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f155b7a000-14f155d7a000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f155d7a000-14f155d7b000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14f155d7b000-14f155e7c000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f155e7c000-14f15607b000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f15607b000-14f15607c000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f15607c000-14f15607d000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14f15607d000-14f156168000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f156168000-14f156367000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f156367000-14f15636f000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f15636f000-14f156371000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14f156371000-14f156386000 rw-p 00000000 00:00 0 
+14f156386000-14f1563a8000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f156583000-14f156588000 rw-p 00000000 00:00 0 
+14f1565a2000-14f1565a4000 rw-p 00000000 00:00 0 
+14f1565a5000-14f1565a7000 rw-p 00000000 00:00 0 
+14f1565a7000-14f1565a8000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f1565a8000-14f1565a9000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14f1565a9000-14f1565aa000 rw-p 00000000 00:00 0 
+7ffe3130a000-7ffe3132b000 rw-p 00000000 00:00 0                          [stack]
+7ffe3139a000-7ffe3139d000 r--p 00000000 00:00 0                          [vvar]
+7ffe3139d000-7ffe3139f000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14373 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/16/1024
+./test_results/spmv/DEFAULT/double/roadNet-TX/16/1024
+./test_results/spmv/DEFAULT/double/twitter7/16/1024
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1024
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14544 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001cce040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14b3d089a609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14b3d083b495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1365399                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1024/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1365399                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1024/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1365399                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1024/SpMV.exe
+01cce000-01cef000 rw-p 00000000 00:00 0                                  [heap]
+14b3cc000000-14b3cc021000 rw-p 00000000 00:00 0 
+14b3cc021000-14b3d0000000 ---p 00000000 00:00 0 
+14b3d0819000-14b3d09db000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b3d09db000-14b3d0bdb000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b3d0bdb000-14b3d0bdf000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b3d0bdf000-14b3d0be1000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b3d0be1000-14b3d0be6000 rw-p 00000000 00:00 0 
+14b3d0be6000-14b3d0bfb000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b3d0bfb000-14b3d0dfb000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b3d0dfb000-14b3d0dfc000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b3d0dfc000-14b3d0efd000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b3d0efd000-14b3d10fc000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b3d10fc000-14b3d10fd000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b3d10fd000-14b3d10fe000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b3d10fe000-14b3d11e9000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b3d11e9000-14b3d13e8000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b3d13e8000-14b3d13f0000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b3d13f0000-14b3d13f2000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b3d13f2000-14b3d1407000 rw-p 00000000 00:00 0 
+14b3d1407000-14b3d1429000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b3d1604000-14b3d1609000 rw-p 00000000 00:00 0 
+14b3d1623000-14b3d1625000 rw-p 00000000 00:00 0 
+14b3d1626000-14b3d1628000 rw-p 00000000 00:00 0 
+14b3d1628000-14b3d1629000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b3d1629000-14b3d162a000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b3d162a000-14b3d162b000 rw-p 00000000 00:00 0 
+7fff91d58000-7fff91d79000 rw-p 00000000 00:00 0                          [stack]
+7fff91d79000-7fff91d7c000 r--p 00000000 00:00 0                          [vvar]
+7fff91d7c000-7fff91d7e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14545 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/32/1024
+./test_results/spmv/DEFAULT/double/roadNet-TX/32/1024
+./test_results/spmv/DEFAULT/double/twitter7/32/1024
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/32768
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14716 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x000000000077f040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x15282865f609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x152828600495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1365401                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/32768/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1365401                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/32768/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1365401                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/32768/SpMV.exe
+0077f000-007a0000 rw-p 00000000 00:00 0                                  [heap]
+152824000000-152824021000 rw-p 00000000 00:00 0 
+152824021000-152828000000 ---p 00000000 00:00 0 
+1528285de000-1528287a0000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1528287a0000-1528289a0000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1528289a0000-1528289a4000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1528289a4000-1528289a6000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1528289a6000-1528289ab000 rw-p 00000000 00:00 0 
+1528289ab000-1528289c0000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+1528289c0000-152828bc0000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152828bc0000-152828bc1000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152828bc1000-152828cc2000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152828cc2000-152828ec1000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152828ec1000-152828ec2000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152828ec2000-152828ec3000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152828ec3000-152828fae000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152828fae000-1528291ad000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1528291ad000-1528291b5000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1528291b5000-1528291b7000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1528291b7000-1528291cc000 rw-p 00000000 00:00 0 
+1528291cc000-1528291ee000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1528293c9000-1528293ce000 rw-p 00000000 00:00 0 
+1528293e8000-1528293ea000 rw-p 00000000 00:00 0 
+1528293eb000-1528293ed000 rw-p 00000000 00:00 0 
+1528293ed000-1528293ee000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1528293ee000-1528293ef000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1528293ef000-1528293f0000 rw-p 00000000 00:00 0 
+7fff3b3c6000-7fff3b3e7000 rw-p 00000000 00:00 0                          [stack]
+7fff3b3f7000-7fff3b3fa000 r--p 00000000 00:00 0                          [vvar]
+7fff3b3fa000-7fff3b3fc000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14717 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/4/32768
+./test_results/spmv/DEFAULT/double/roadNet-TX/4/32768
+./test_results/spmv/DEFAULT/double/twitter7/4/32768
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/32768
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14888 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x000000000152b040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14b9e13d2609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14b9e1373495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1352436                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/32768/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1352436                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/32768/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1352436                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/32768/SpMV.exe
+0152b000-0154c000 rw-p 00000000 00:00 0                                  [heap]
+14b9dc000000-14b9dc021000 rw-p 00000000 00:00 0 
+14b9dc021000-14b9e0000000 ---p 00000000 00:00 0 
+14b9e1351000-14b9e1513000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b9e1513000-14b9e1713000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b9e1713000-14b9e1717000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b9e1717000-14b9e1719000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14b9e1719000-14b9e171e000 rw-p 00000000 00:00 0 
+14b9e171e000-14b9e1733000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b9e1733000-14b9e1933000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b9e1933000-14b9e1934000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14b9e1934000-14b9e1a35000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b9e1a35000-14b9e1c34000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b9e1c34000-14b9e1c35000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b9e1c35000-14b9e1c36000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14b9e1c36000-14b9e1d21000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b9e1d21000-14b9e1f20000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b9e1f20000-14b9e1f28000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b9e1f28000-14b9e1f2a000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14b9e1f2a000-14b9e1f3f000 rw-p 00000000 00:00 0 
+14b9e1f3f000-14b9e1f61000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b9e213c000-14b9e2141000 rw-p 00000000 00:00 0 
+14b9e215b000-14b9e215d000 rw-p 00000000 00:00 0 
+14b9e215e000-14b9e2160000 rw-p 00000000 00:00 0 
+14b9e2160000-14b9e2161000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b9e2161000-14b9e2162000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14b9e2162000-14b9e2163000 rw-p 00000000 00:00 0 
+7ffc7de6e000-7ffc7de8f000 rw-p 00000000 00:00 0                          [stack]
+7ffc7df00000-7ffc7df03000 r--p 00000000 00:00 0                          [vvar]
+7ffc7df03000-7ffc7df05000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 14889 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/8/32768
+./test_results/spmv/DEFAULT/double/roadNet-TX/8/32768
+./test_results/spmv/DEFAULT/double/twitter7/8/32768
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/32768
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15061 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001f91040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14947add0609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14947ad71495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370560                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/32768/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370560                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/32768/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370560                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/32768/SpMV.exe
+01f91000-01fb2000 rw-p 00000000 00:00 0                                  [heap]
+149474000000-149474021000 rw-p 00000000 00:00 0 
+149474021000-149478000000 ---p 00000000 00:00 0 
+14947ad4f000-14947af11000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14947af11000-14947b111000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14947b111000-14947b115000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14947b115000-14947b117000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14947b117000-14947b11c000 rw-p 00000000 00:00 0 
+14947b11c000-14947b131000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14947b131000-14947b331000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14947b331000-14947b332000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14947b332000-14947b433000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14947b433000-14947b632000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14947b632000-14947b633000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14947b633000-14947b634000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14947b634000-14947b71f000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14947b71f000-14947b91e000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14947b91e000-14947b926000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14947b926000-14947b928000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14947b928000-14947b93d000 rw-p 00000000 00:00 0 
+14947b93d000-14947b95f000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14947bb3a000-14947bb3f000 rw-p 00000000 00:00 0 
+14947bb59000-14947bb5b000 rw-p 00000000 00:00 0 
+14947bb5c000-14947bb5e000 rw-p 00000000 00:00 0 
+14947bb5e000-14947bb5f000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14947bb5f000-14947bb60000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14947bb60000-14947bb61000 rw-p 00000000 00:00 0 
+7ffe05801000-7ffe05822000 rw-p 00000000 00:00 0                          [stack]
+7ffe05971000-7ffe05974000 r--p 00000000 00:00 0                          [vvar]
+7ffe05974000-7ffe05976000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15062 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/16/32768
+./test_results/spmv/DEFAULT/double/roadNet-TX/16/32768
+./test_results/spmv/DEFAULT/double/twitter7/16/32768
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/32768
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15234 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000000af2040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14c2bb448609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14c2bb3e9495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370628                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/32768/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370628                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/32768/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370628                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/32768/SpMV.exe
+00af2000-00b13000 rw-p 00000000 00:00 0                                  [heap]
+14c2b4000000-14c2b4021000 rw-p 00000000 00:00 0 
+14c2b4021000-14c2b8000000 ---p 00000000 00:00 0 
+14c2bb3c7000-14c2bb589000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14c2bb589000-14c2bb789000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14c2bb789000-14c2bb78d000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14c2bb78d000-14c2bb78f000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14c2bb78f000-14c2bb794000 rw-p 00000000 00:00 0 
+14c2bb794000-14c2bb7a9000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14c2bb7a9000-14c2bb9a9000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14c2bb9a9000-14c2bb9aa000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14c2bb9aa000-14c2bbaab000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14c2bbaab000-14c2bbcaa000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14c2bbcaa000-14c2bbcab000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14c2bbcab000-14c2bbcac000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14c2bbcac000-14c2bbd97000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14c2bbd97000-14c2bbf96000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14c2bbf96000-14c2bbf9e000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14c2bbf9e000-14c2bbfa0000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14c2bbfa0000-14c2bbfb5000 rw-p 00000000 00:00 0 
+14c2bbfb5000-14c2bbfd7000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14c2bc1b2000-14c2bc1b7000 rw-p 00000000 00:00 0 
+14c2bc1d1000-14c2bc1d3000 rw-p 00000000 00:00 0 
+14c2bc1d4000-14c2bc1d6000 rw-p 00000000 00:00 0 
+14c2bc1d6000-14c2bc1d7000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14c2bc1d7000-14c2bc1d8000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14c2bc1d8000-14c2bc1d9000 rw-p 00000000 00:00 0 
+7ffce7e8b000-7ffce7eac000 rw-p 00000000 00:00 0                          [stack]
+7ffce7efb000-7ffce7efe000 r--p 00000000 00:00 0                          [vvar]
+7ffce7efe000-7ffce7f00000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15235 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/32/32768
+./test_results/spmv/DEFAULT/double/roadNet-TX/32/32768
+./test_results/spmv/DEFAULT/double/twitter7/32/32768
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1048576
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15406 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000000a13040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x1543ef5c2609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x1543ef563495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1365292                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1048576/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1365292                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1048576/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1365292                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/1048576/SpMV.exe
+00a13000-00a34000 rw-p 00000000 00:00 0                                  [heap]
+1543e8000000-1543e8021000 rw-p 00000000 00:00 0 
+1543e8021000-1543ec000000 ---p 00000000 00:00 0 
+1543ef541000-1543ef703000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1543ef703000-1543ef903000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1543ef903000-1543ef907000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1543ef907000-1543ef909000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1543ef909000-1543ef90e000 rw-p 00000000 00:00 0 
+1543ef90e000-1543ef923000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+1543ef923000-1543efb23000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+1543efb23000-1543efb24000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+1543efb24000-1543efc25000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+1543efc25000-1543efe24000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+1543efe24000-1543efe25000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+1543efe25000-1543efe26000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+1543efe26000-1543eff11000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1543eff11000-1543f0110000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1543f0110000-1543f0118000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1543f0118000-1543f011a000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+1543f011a000-1543f012f000 rw-p 00000000 00:00 0 
+1543f012f000-1543f0151000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1543f032c000-1543f0331000 rw-p 00000000 00:00 0 
+1543f034b000-1543f034d000 rw-p 00000000 00:00 0 
+1543f034e000-1543f0350000 rw-p 00000000 00:00 0 
+1543f0350000-1543f0351000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1543f0351000-1543f0352000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+1543f0352000-1543f0353000 rw-p 00000000 00:00 0 
+7ffd32c14000-7ffd32c35000 rw-p 00000000 00:00 0                          [stack]
+7ffd32d6d000-7ffd32d70000 r--p 00000000 00:00 0                          [vvar]
+7ffd32d70000-7ffd32d72000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15407 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/4/1048576
+./test_results/spmv/DEFAULT/double/roadNet-TX/4/1048576
+./test_results/spmv/DEFAULT/double/twitter7/4/1048576
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1048576
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15578 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000000bc9040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x14ec5e386609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x14ec5e327495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370894                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1048576/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370894                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1048576/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370894                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/8/1048576/SpMV.exe
+00bc9000-00bea000 rw-p 00000000 00:00 0                                  [heap]
+14ec58000000-14ec58021000 rw-p 00000000 00:00 0 
+14ec58021000-14ec5c000000 ---p 00000000 00:00 0 
+14ec5e305000-14ec5e4c7000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ec5e4c7000-14ec5e6c7000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ec5e6c7000-14ec5e6cb000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ec5e6cb000-14ec5e6cd000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+14ec5e6cd000-14ec5e6d2000 rw-p 00000000 00:00 0 
+14ec5e6d2000-14ec5e6e7000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ec5e6e7000-14ec5e8e7000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ec5e8e7000-14ec5e8e8000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14ec5e8e8000-14ec5e9e9000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ec5e9e9000-14ec5ebe8000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ec5ebe8000-14ec5ebe9000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ec5ebe9000-14ec5ebea000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+14ec5ebea000-14ec5ecd5000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ec5ecd5000-14ec5eed4000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ec5eed4000-14ec5eedc000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ec5eedc000-14ec5eede000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14ec5eede000-14ec5eef3000 rw-p 00000000 00:00 0 
+14ec5eef3000-14ec5ef15000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ec5f0f0000-14ec5f0f5000 rw-p 00000000 00:00 0 
+14ec5f10f000-14ec5f111000 rw-p 00000000 00:00 0 
+14ec5f112000-14ec5f114000 rw-p 00000000 00:00 0 
+14ec5f114000-14ec5f115000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ec5f115000-14ec5f116000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+14ec5f116000-14ec5f117000 rw-p 00000000 00:00 0 
+7fff9e970000-7fff9e991000 rw-p 00000000 00:00 0                          [stack]
+7fff9e9b7000-7fff9e9ba000 r--p 00000000 00:00 0                          [vvar]
+7fff9e9ba000-7fff9e9bc000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15579 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/8/1048576
+./test_results/spmv/DEFAULT/double/roadNet-TX/8/1048576
+./test_results/spmv/DEFAULT/double/twitter7/8/1048576
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1048576
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15751 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001b7a040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x148823fbe609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x148823f5f495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1370753                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1048576/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1370753                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1048576/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1370753                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/16/1048576/SpMV.exe
+01b7a000-01b9b000 rw-p 00000000 00:00 0                                  [heap]
+14881c000000-14881c021000 rw-p 00000000 00:00 0 
+14881c021000-148820000000 ---p 00000000 00:00 0 
+148823f3d000-1488240ff000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1488240ff000-1488242ff000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+1488242ff000-148824303000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+148824303000-148824305000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+148824305000-14882430a000 rw-p 00000000 00:00 0 
+14882430a000-14882431f000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14882431f000-14882451f000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+14882451f000-148824520000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+148824520000-148824621000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+148824621000-148824820000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+148824820000-148824821000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+148824821000-148824822000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+148824822000-14882490d000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+14882490d000-148824b0c000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+148824b0c000-148824b14000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+148824b14000-148824b16000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+148824b16000-148824b2b000 rw-p 00000000 00:00 0 
+148824b2b000-148824b4d000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+148824d28000-148824d2d000 rw-p 00000000 00:00 0 
+148824d47000-148824d49000 rw-p 00000000 00:00 0 
+148824d4a000-148824d4c000 rw-p 00000000 00:00 0 
+148824d4c000-148824d4d000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+148824d4d000-148824d4e000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+148824d4e000-148824d4f000 rw-p 00000000 00:00 0 
+7fffc821a000-7fffc823b000 rw-p 00000000 00:00 0                          [stack]
+7fffc8339000-7fffc833c000 r--p 00000000 00:00 0                          [vvar]
+7fffc833c000-7fffc833e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15752 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/16/1048576
+./test_results/spmv/DEFAULT/double/roadNet-TX/16/1048576
+./test_results/spmv/DEFAULT/double/twitter7/16/1048576
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1048576
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15925 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000000001c58040 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x152d79069609]
+./SpMV.exe[0x403230]
+./SpMV.exe[0x400d0e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x152d7900a495]
+./SpMV.exe[0x401175]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:59 1371033                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1048576/SpMV.exe
+00604000-00605000 r--p 00004000 00:59 1371033                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1048576/SpMV.exe
+00605000-00606000 rw-p 00005000 00:59 1371033                            /zfs/fthpc/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/32/1048576/SpMV.exe
+01c58000-01c79000 rw-p 00000000 00:00 0                                  [heap]
+152d74000000-152d74021000 rw-p 00000000 00:00 0 
+152d74021000-152d78000000 ---p 00000000 00:00 0 
+152d78fe8000-152d791aa000 r-xp 00000000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152d791aa000-152d793aa000 ---p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152d793aa000-152d793ae000 r--p 001c2000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152d793ae000-152d793b0000 rw-p 001c6000 08:02 135617658                  /usr/lib64/libc-2.17.so
+152d793b0000-152d793b5000 rw-p 00000000 00:00 0 
+152d793b5000-152d793ca000 r-xp 00000000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152d793ca000-152d795ca000 ---p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152d795ca000-152d795cb000 rw-p 00015000 00:3a 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+152d795cb000-152d796cc000 r-xp 00000000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152d796cc000-152d798cb000 ---p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152d798cb000-152d798cc000 r--p 00100000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152d798cc000-152d798cd000 rw-p 00101000 08:02 135617666                  /usr/lib64/libm-2.17.so
+152d798cd000-152d799b8000 r-xp 00000000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152d799b8000-152d79bb7000 ---p 000eb000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152d79bb7000-152d79bbf000 r--p 000ea000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152d79bbf000-152d79bc1000 rw-p 000f2000 00:3a 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+152d79bc1000-152d79bd6000 rw-p 00000000 00:00 0 
+152d79bd6000-152d79bf8000 r-xp 00000000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152d79dd3000-152d79dd8000 rw-p 00000000 00:00 0 
+152d79df2000-152d79df4000 rw-p 00000000 00:00 0 
+152d79df5000-152d79df7000 rw-p 00000000 00:00 0 
+152d79df7000-152d79df8000 r--p 00021000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152d79df8000-152d79df9000 rw-p 00022000 08:02 135617651                  /usr/lib64/ld-2.17.so
+152d79df9000-152d79dfa000 rw-p 00000000 00:00 0 
+7ffde301f000-7ffde3040000 rw-p 00000000 00:00 0                          [stack]
+7ffde3044000-7ffde3047000 r--p 00000000 00:00 0                          [vvar]
+7ffde3047000-7ffde3049000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/7223716.pbs02.SC: line 93: 15926 Aborted                 (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-CA/32/1048576
+./test_results/spmv/DEFAULT/double/roadNet-TX/32/1048576
+./test_results/spmv/DEFAULT/double/twitter7/32/1048576
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=90,cput=00:01:20,mem=64824kb,ncpus=40,vmem=519424kb,walltime=00:01:25
+ 
+ 

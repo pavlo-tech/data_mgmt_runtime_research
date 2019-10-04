@@ -1,0 +1,36 @@
+./test_results/tiled_matmatmult/FAST_HASH/32/double/256/4/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/384/4/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/512/4/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/768/4/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/4/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/256/8/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/384/8/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/512/8/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/768/8/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/8/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/256/16/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/384/16/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/512/16/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/768/16/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/16/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/256/32/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/384/32/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/512/32/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/768/32/0
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/32/0
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=101,cput=00:18:04,mem=58768kb,ncpus=40,vmem=511912kb,walltime=00:18:05
+ 
+ 

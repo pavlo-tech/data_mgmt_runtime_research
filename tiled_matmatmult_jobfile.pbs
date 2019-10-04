@@ -3,12 +3,12 @@
 #PBS -l walltime=240:00:00
 #PBS -j oe
 #PBS -q fthpc
-#PBS -N xcompress
+#PBS -N two_tiled_important
 #PBS -m ae
 #PBS -M ptriant@g.clemson.edu
-#0PBS -J 0-7
+#0PBS -J 0-1
 
-partition_size=420
+partition_size=12
 
 module load gcc/4.8.1
 module load mpich
@@ -18,11 +18,11 @@ module load python/3.4
 # init arrays: matrix width scaled by 2^10
 data_type_arr=(double)
 #matrix_width_arr=(1 4 8 16 32)
-matrix_width_arr=(10 12 18 24 48)
-zfp_rate_arr=(1 2 4 8 16 32 48 64)
-#zfp_cache_size_arr=(0 512 1024 2048 4096 8192 16384)
-zfp_cache_size_arr=(12288 14336 20480 24576 28672 32768 40960)
-tile_width_arr=(16 32 64 128 256 512)
+matrix_width_arr=(256 384 512)
+zfp_rate_arr=(4 8 16 32)
+zfp_cache_size_arr=(0)
+#zfp_cache_size_arr=(0)
+tile_width_arr=(32)
 
 
 
@@ -60,13 +60,14 @@ cd $PBS_O_WORKDIR
 
 # init variables 
 data_type=${data_type_arr[$x0]}
-((matrix_width= ${matrix_width_arr[$x1]} * 2**5))
+matrix_width=${matrix_width_arr[$x1]}
 zfp_rate=${zfp_rate_arr[$x2]}
 zfp_cache_size=${zfp_cache_size_arr[$x3]}
 tile_width=${tile_width_arr[$x4]}
 
 # make folder to write output to
-output_folder=./test_results/tiled_matmatmult/$tile_width/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+#output_folder=./test_results/tiled_matmatmult/DEFAULT/$tile_width/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+output_folder=./test_results/tiled_matmatmult/TWOWAY/$tile_width/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
 mkdir -p $output_folder
 echo $output_folder
 
@@ -78,17 +79,18 @@ cd $output_folder
 
 # compile compressed version and uncompressed version
 matrix_width+="l"
-MYFLAGS="-DTILED -DTILE_SIZE=$tile_width -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size"
+MYFLAGS="-DTILED -DTILE_SIZE=$tile_width -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_TWOWAY"
+#MYFLAGS="-DTILED -DTILE_SIZE=$tile_width -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_FAST_HASH"
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
 
-g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o tiled_matmatmult.exe
+#g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $MYFLAGS matmatmult.cpp -o tiled_matmatmult.exe
 g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o tiled_matmatmult_zfp.exe
 
-./tiled_matmatmult.exe > tiled_matmatmult_output.txt
+#./tiled_matmatmult.exe > tiled_matmatmult_output.txt
 ./tiled_matmatmult_zfp.exe > tiled_matmatmult_zfp_output.txt
 
-rm ./tiled_matmatmult.exe
+#rm ./tiled_matmatmult.exe
 rm ./tiled_matmatmult_zfp.exe
 
 done

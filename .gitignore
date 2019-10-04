@@ -3,3 +3,4 @@ test_results/*
 job_output/*
 old_test_results/*
 *.pdf
+spmv/aniso/*

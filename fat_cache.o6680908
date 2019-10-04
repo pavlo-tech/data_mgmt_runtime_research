@@ -1,0 +1,28 @@
+./old_machine_test_results/matmatmult_cachestats_fat/double/256/4/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/512/4/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/1024/4/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/256/8/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/512/8/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/1024/8/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/256/16/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/512/16/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/1024/16/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/256/32/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/512/32/0
+./old_machine_test_results/matmatmult_cachestats_fat/double/1024/32/0
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=50gb,ncpus=20,walltime=72:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=100,cput=00:06:10,mem=58272kb,ncpus=20,vmem=511692kb,walltime=00:06:10
+ 
+ 

@@ -1,0 +1,24 @@
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/4/256
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/8/256
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/16/256
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/32/256
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/4/512
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/8/512
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/16/512
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/32/512
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=102,cput=02:29:57,mem=29320kb,ncpus=40,vmem=485572kb,walltime=02:29:57
+ 
+ 

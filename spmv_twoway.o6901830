@@ -1,0 +1,112 @@
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/4/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/4/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/4/0
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14014 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14029 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/4/0
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/8/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/8/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/8/0
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14263 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14264 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/8/0
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/16/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/16/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/16/0
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14446 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14447 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/16/0
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/32/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/32/0
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/32/0
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14629 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14630 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/32/0
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/4/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/4/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/4/1024
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14814 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14815 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/4/1024
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/8/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/8/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/8/1024
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14997 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 14998 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/8/1024
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/16/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/16/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/16/1024
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15181 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15182 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/16/1024
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/32/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/32/1024
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/32/1024
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15364 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15365 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/32/1024
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/4/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/4/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/4/32768
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15550 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15551 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/4/32768
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/8/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/8/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/8/32768
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15732 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15733 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/8/32768
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/16/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/16/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/16/32768
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15914 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 15915 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/16/32768
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/32/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/32/32768
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/32/32768
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16097 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16098 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/32/32768
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/4/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/4/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/4/1048576
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16283 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16284 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/4/1048576
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/8/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/8/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/8/1048576
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16463 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16464 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/8/1048576
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/16/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/16/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/16/1048576
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16645 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16646 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/16/1048576
+./test_results/spmv/TWOWAY/double/FEM_3D_thermal2/32/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian/32/1048576
+./test_results/spmv/TWOWAY/double/iChem_Jacobian_b/32/1048576
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16826 Segmentation fault      (core dumped) ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+/var/spool/pbs/mom_priv/jobs/6901830.pbs02.SC: line 90: 16827 Segmentation fault      (core dumped) ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/TWOWAY/double/kron_g500-logn17/32/1048576
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=98,cput=00:04:42,mem=79040kb,ncpus=40,vmem=509772kb,walltime=00:04:52
+ 
+ 

@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <ctime>
 #include <math.h>
+#include <algorithm> 
+using namespace std;
 
 #ifdef ZFP
 #include "zfparray2.h"
@@ -25,8 +27,10 @@
 #define TILE_M TILE_SIZE
 #define TILE_N TILE_SIZE
 
-
+#ifndef NTIMES
 #define NTIMES 5
+#endif
+
 #define A_VALUE 1
 #define B_VALUE 2
 
@@ -116,23 +120,23 @@ void multMat_tiled(T A[], int A_m, int A_n, T B[], int B_m, int B_n, T AB[])
 	/* A_m must be divisible by tile_m */
 	/* B_n must be divisible by tile_n */
 
-	int i,j,k,m,n;
-
-	for (i = 0; i < A_m; i += TILE_M) // for each row of A
+	int LEN2=A_n;
+	int BLOCK_SIZE=TILE_M;
+ 	for (int ii = 0; ii < LEN2; ii+=BLOCK_SIZE) 
 	{
-		for (j = 0; j < B_n; j += TILE_N) // for each col of B
-		{
-			for (k = 0; k < A_n; ++k) // sum across row of A and column of B
-			{
-				for (m = 0; m < TILE_M && (i+m) < A_m; ++m) // sum for all values in tile
+        for (int kk = 0; kk < LEN2; kk+=BLOCK_SIZE) 
 				{
-					for (n = 0; n < TILE_N && (j+n) < B_n; ++n)
-					{
-						AB[(i + m) * A_n + (j + n)]  += (A[(i + m) * A_n + k] * B[k * B_n + (j + n)]);
-					}
-				}
-			}
-		}
+            for (int jj = 0; jj < LEN2; jj+= BLOCK_SIZE) 
+						{
+                for (int i = ii; i < std::min(ii+BLOCK_SIZE,LEN2); i++) {
+                    for (int k = kk; k < std::min(kk+BLOCK_SIZE,LEN2); k++) {
+                        for (int j = jj; j < std::min(jj+BLOCK_SIZE,LEN2); j++) {
+                            AB[i*LEN2 + j] += A[i*LEN2 + k] * B[k*LEN2+j];
+                        }
+                    }
+            		}
+        		}
+   		 }		
 	}
 }
 

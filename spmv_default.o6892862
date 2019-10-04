@@ -1,0 +1,149 @@
+./test_results/spmv/DEFAULT/double/roadNet-PA/4/0
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+/var/spool/pbs/mom_priv/jobs/6892862.pbs02.SC: line 84:  6703 Segmentation fault      ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000153fb8365010 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x153fb9b6e609]
+./SpMV.exe[0x400fe8]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x153fb9b0f495]
+./SpMV.exe[0x401185]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:40 33951602                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-PA/4/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:40 33951602                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-PA/4/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:40 33951602                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-PA/4/0/SpMV.exe
+015db000-015fc000 rw-p 00000000 00:00 0                                  [heap]
+153fb0000000-153fb0021000 rw-p 00000000 00:00 0 
+153fb0021000-153fb4000000 ---p 00000000 00:00 0 
+153fb6642000-153fb8f29000 rw-p 00000000 00:00 0 
+153fb9aed000-153fb9caf000 r-xp 00000000 08:02 135583913                  /usr/lib64/libc-2.17.so
+153fb9caf000-153fb9eaf000 ---p 001c2000 08:02 135583913                  /usr/lib64/libc-2.17.so
+153fb9eaf000-153fb9eb3000 r--p 001c2000 08:02 135583913                  /usr/lib64/libc-2.17.so
+153fb9eb3000-153fb9eb5000 rw-p 001c6000 08:02 135583913                  /usr/lib64/libc-2.17.so
+153fb9eb5000-153fb9eba000 rw-p 00000000 00:00 0 
+153fb9eba000-153fb9ecf000 r-xp 00000000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153fb9ecf000-153fba0cf000 ---p 00015000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153fba0cf000-153fba0d0000 rw-p 00015000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+153fba0d0000-153fba1d1000 r-xp 00000000 08:02 135584832                  /usr/lib64/libm-2.17.so
+153fba1d1000-153fba3d0000 ---p 00101000 08:02 135584832                  /usr/lib64/libm-2.17.so
+153fba3d0000-153fba3d1000 r--p 00100000 08:02 135584832                  /usr/lib64/libm-2.17.so
+153fba3d1000-153fba3d2000 rw-p 00101000 08:02 135584832                  /usr/lib64/libm-2.17.so
+153fba3d2000-153fba3d4000 r-xp 00000000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+153fba3d4000-153fba5d4000 ---p 00002000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+153fba5d4000-153fba5d5000 r--p 00002000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+153fba5d5000-153fba5d6000 rw-p 00003000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+153fba5d6000-153fba6c1000 r-xp 00000000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153fba6c1000-153fba8c0000 ---p 000eb000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153fba8c0000-153fba8c8000 r--p 000ea000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153fba8c8000-153fba8ca000 rw-p 000f2000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+153fba8ca000-153fba8df000 rw-p 00000000 00:00 0 
+153fba8df000-153fba901000 r-xp 00000000 08:02 135583906                  /usr/lib64/ld-2.17.so
+153fbaad9000-153fbaadf000 rw-p 00000000 00:00 0 
+153fbaafc000-153fbab00000 rw-p 00000000 00:00 0 
+153fbab00000-153fbab01000 r--p 00021000 08:02 135583906                  /usr/lib64/ld-2.17.so
+153fbab01000-153fbab02000 rw-p 00022000 08:02 135583906                  /usr/lib64/ld-2.17.so
+153fbab02000-153fbab03000 rw-p 00000000 00:00 0 
+7ffee2792000-7ffee27b3000 rw-p 00000000 00:00 0                          [stack]
+7ffee27d2000-7ffee27d5000 r--p 00000000 00:00 0                          [vvar]
+7ffee27d5000-7ffee27d7000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/6892862.pbs02.SC: line 84:  6715 Aborted                 ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/roadNet-TX/4/0
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+/var/spool/pbs/mom_priv/jobs/6892862.pbs02.SC: line 84:  6788 Segmentation fault      ./SpMV_zfp.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > zfp_output.txt
+*** Error in `./SpMV.exe': double free or corruption (out): 0x0000151e8e65c010 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81609)[0x151e90431609]
+./SpMV.exe[0x400fe8]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x151e903d2495]
+./SpMV.exe[0x401185]
+======= Memory map: ========
+00400000-00404000 r-xp 00000000 00:40 33951629                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-TX/4/0/SpMV.exe
+00604000-00605000 r--p 00004000 00:40 33951629                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-TX/4/0/SpMV.exe
+00605000-00606000 rw-p 00005000 00:40 33951629                           /home/ptriant/Research/data_mgmt_runtime/test_results/spmv/DEFAULT/double/roadNet-TX/4/0/SpMV.exe
+015ad000-015ce000 rw-p 00000000 00:00 0                                  [heap]
+151e88000000-151e88021000 rw-p 00000000 00:00 0 
+151e88021000-151e8c000000 ---p 00000000 00:00 0 
+151e8c125000-151e8f506000 rw-p 00000000 00:00 0 
+151e903b0000-151e90572000 r-xp 00000000 08:02 135583913                  /usr/lib64/libc-2.17.so
+151e90572000-151e90772000 ---p 001c2000 08:02 135583913                  /usr/lib64/libc-2.17.so
+151e90772000-151e90776000 r--p 001c2000 08:02 135583913                  /usr/lib64/libc-2.17.so
+151e90776000-151e90778000 rw-p 001c6000 08:02 135583913                  /usr/lib64/libc-2.17.so
+151e90778000-151e9077d000 rw-p 00000000 00:00 0 
+151e9077d000-151e90792000 r-xp 00000000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+151e90792000-151e90992000 ---p 00015000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+151e90992000-151e90993000 rw-p 00015000 00:3f 81265912                   /software/gcc/4.8.1/lib64/libgcc_s.so.1
+151e90993000-151e90a94000 r-xp 00000000 08:02 135584832                  /usr/lib64/libm-2.17.so
+151e90a94000-151e90c93000 ---p 00101000 08:02 135584832                  /usr/lib64/libm-2.17.so
+151e90c93000-151e90c94000 r--p 00100000 08:02 135584832                  /usr/lib64/libm-2.17.so
+151e90c94000-151e90c95000 rw-p 00101000 08:02 135584832                  /usr/lib64/libm-2.17.so
+151e90c95000-151e90c97000 r-xp 00000000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+151e90c97000-151e90e97000 ---p 00002000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+151e90e97000-151e90e98000 r--p 00002000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+151e90e98000-151e90e99000 rw-p 00003000 08:02 135584830                  /usr/lib64/libdl-2.17.so
+151e90e99000-151e90f84000 r-xp 00000000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+151e90f84000-151e91183000 ---p 000eb000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+151e91183000-151e9118b000 r--p 000ea000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+151e9118b000-151e9118d000 rw-p 000f2000 00:3f 81265942                   /software/gcc/4.8.1/lib64/libstdc++.so.6.0.18
+151e9118d000-151e911a2000 rw-p 00000000 00:00 0 
+151e911a2000-151e911c4000 r-xp 00000000 08:02 135583906                  /usr/lib64/ld-2.17.so
+151e9139c000-151e913a2000 rw-p 00000000 00:00 0 
+151e913bf000-151e913c3000 rw-p 00000000 00:00 0 
+151e913c3000-151e913c4000 r--p 00021000 08:02 135583906                  /usr/lib64/ld-2.17.so
+151e913c4000-151e913c5000 rw-p 00022000 08:02 135583906                  /usr/lib64/ld-2.17.so
+151e913c5000-151e913c6000 rw-p 00000000 00:00 0 
+7ffe594f7000-7ffe59518000 rw-p 00000000 00:00 0                          [stack]
+7ffe59551000-7ffe59554000 r--p 00000000 00:00 0                          [vvar]
+7ffe59554000-7ffe59556000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+/var/spool/pbs/mom_priv/jobs/6892862.pbs02.SC: line 84:  6790 Aborted                 ./SpMV.exe /home/ptriant/Research/data_mgmt_runtime/spmv/aniso/$matrix_name.mtx > output.txt
+./test_results/spmv/DEFAULT/double/mycielskian19/4/0
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libdl.so when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libdl.a when searching for -ldl
+/bin/ld: skipping incompatible /usr/lib//libm.so when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libm.a when searching for -lm
+/bin/ld: skipping incompatible /usr/lib//libc.so when searching for -lc
+/bin/ld: skipping incompatible /usr/lib//libc.a when searching for -lc
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=98,cput=00:03:03,mem=4531568kb,ncpus=40,vmem=4765956kb,walltime=00:03:10
+ 
+ 

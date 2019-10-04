@@ -9,7 +9,7 @@ import seaborn as sns
 sns.set()
 sns.set_style("whitegrid", {'axes.grid' : True})
 sns.set_color_codes()
-sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
+sns.set_context("notebook", font_scale=1.25, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
 font = {'family' : 'serif'}
 mpl.rc('font', **font)
 mpl.rcParams['ps.useafm'] = True
@@ -25,7 +25,7 @@ cols=['tiled','tile_size','data_type','matrix_width','zfp_rate','cache_size','is
 
 
 default_df = pd.read_csv("matmatmult_df.csv")
-fast_df = pd.read_csv("fasthash_matmatmult_df.csv")
+fast_df = pd.read_csv("twoway_matmatmult_df.csv")
 cachesizes_df=pd.read_csv('default_cache_sizes.csv')
 
 
@@ -76,13 +76,14 @@ print(bettercache_df)
 
 improvement_cols=['matrix_width','zfp_rate','original_time','tiled_fasthash_time','tile_size','cache_size']
 improvement_df=pd.DataFrame(columns=improvement_cols)
-for w in [256,384,512,768,1024]:
-	for r in [1,2,4,8,16,32]:
+for w in [256,384,512,1024]:
+	for r in [4,8,16,32]:
 		newrow={}
 		newrow['matrix_width']=w
 		newrow['zfp_rate']=r
 		newrow['original_time']=default_df.loc[(default_df['matrix_width'] == w) & (default_df['zfp_rate'] == r)]['Time'].values[0]
 		fastrow=bettercache_df.loc[(bettercache_df['matrix_width'] == w) & (bettercache_df['zfp_rate'] == r)]
+		#print(str(w)+" "+str(r))	
 		newrow['tiled_fasthash_time']=fastrow['Time'].values[0]
 		newrow['tile_size']=fastrow['tile_size'].values[0]
 		#newrow['cache_size']=fastrow['actual_cache_size'].values[0]
@@ -94,23 +95,24 @@ print(improvement_df)
 
 
 bar_width=.1
-widths=[256,384,512,768,1024]
+widths=[256,384,512,1024]
 rates=[4,8,16,32]
 index = np.arange(len(widths))
 for ri,r in enumerate(rates):
 	data=improvement_df.loc[improvement_df['zfp_rate']==r]
 	x=data['matrix_width'].values
 	y=data['speedup'].values
+	#print(y)
 	plt.bar(index+bar_width*ri,y,bar_width,label=r)
-plt.ylim(0,1.5)
-plt.title('Speedup Using Simple Hash')
+plt.ylim(.9,1.1)
+plt.title('Speedup Using Two-way Skew-Associative Cache')
 plt.axhline(y=1.0,color='k')
 plt.xticks(index + bar_width, (widths))
 plt.legend(title='ZFP Rate',loc='upper center',ncol=len(rates),fontsize='x-small')
-plt.ylabel('Speedup')
+plt.ylabel('Speedup Over Default Algorithm')
 plt.xlabel('n')
 plt.tight_layout()
-plt.savefig('images/fasthash_speedup.pdf')
+plt.savefig('images/twoway_speedup.pdf')
 
 plt.clf()
 bar_width=.1
@@ -120,6 +122,7 @@ index = np.arange(len(rates))
 for wi,w in enumerate(widths):
 	data=improvement_df.loc[improvement_df['matrix_width']==w]
 	y=data['speedup'].values
+	print(str(w) + " "+str(min(y)))
 	plt.bar(index+bar_width*wi,y,bar_width,label=w)
 plt.ylim(1,1.2)
 plt.xticks(index + bar_width, (rates))

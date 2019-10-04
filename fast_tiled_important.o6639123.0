@@ -1,0 +1,17 @@
+./test_results/tiled_matmatmult/FAST_HASH/32/double/1024/4/16384
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=90,cput=00:00:09,mem=11280kb,ncpus=40,vmem=244012kb,walltime=00:00:20
+ 
+ 

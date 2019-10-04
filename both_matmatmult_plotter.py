@@ -18,7 +18,7 @@ sns.set_color_codes()
 tiled = len(sys.argv) > 1 and sys.argv[1] == "tiled"
 print("tiled" if tiled else "not tiled")
 
-sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
+sns.set_context("notebook", font_scale=1.25, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
 #'''
 
 # axis labels
@@ -48,34 +48,40 @@ width=1024 #[1024, 128, 1536, 2048, 256, 32, 384, 512, 576, 768]
 #rate = 64#[1, 16, 2,  32/ 4/  48/ 64/ 8/
 
 if tiled:
-	plt.clf()
-	for tile_size in df['tile_size'].unique():
-		uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) & (df['tile_size']==tile_size)]
-		fig = sns.lineplot(x='matrix_width', y='FLOPS', data=uncompressed_df, ci='sd', label=str(tile_size)+" x "+str(tile_size))
-	#plt.title("Uncompressed Tiled Matrix-Matrix Multiplication")
-	plt.tight_layout()
-	fig.get_figure().savefig("images/tiled_uncompressed.pdf")
+	df= pd.read_csv("tiled_matmatmult_df.csv")
+	df['FLOPS']= (2 * df['matrix_width']**3) / (df['Time'])
+	df['Megaflops']=df['FLOPS']/2**20
+	df=df.loc[(df['tile_size']==32) & (df['is_zfp'] == True) & (df['data_type'] == 'double')]
+	#print(df)
+	default_cache_df = pd.read_csv('default_cache_sizes.csv')	
 
-	for rate in df['zfp_rate'].unique():
-		plt.clf()	
-		for tile_size in df['tile_size'].unique():
-			default_df = df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] <= width) & (df['tile_size']==tile_size) &\
-				(df['zfp_rate'] == rate) & (df['cache_size'] == 0)]
-			fig = sns.lineplot(x='matrix_width', y='FLOPS', data=default_df, ci='sd', label=str(tile_size)+" x "+str(tile_size))
-		#plt.title("Tiled Matrix-Matrix Multiplication With Rate "+str(rate))
-		plt.tight_layout()
-		fig.get_figure().savefig("images/tiled_default_cache_rate_"+str(rate)+"compressed.pdf")
-	
-	rate=16
-	for width in df['matrix_width'].unique():
+	for width in [1024]:
 		plt.clf()
-		for tile_size in df['tile_size'].unique():
-			best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) & (df['tile_size']==tile_size) &\
-    		(df['zfp_rate'] == rate)]
-			fig = sns.lineplot(x='cache_size', y='FLOPS', data=best_df, ci='sd',label=str(tile_size)+" x "+str(tile_size))
-		plt.title("Tiled Matrix-Matrix Multiplication With Rate "+str(rate))
+		#for rate in df['zfp_rate'].unique():
+		for rate in [4, 8, 16, 32]:
+			best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
+    		(df['zfp_rate'] == rate)]#& (df['cache_size'] >= 2**13)]
+			#print(best_df)
+			default_cache_size=default_cache_df.loc[(default_cache_df['matrix_wdith'] == width) & (default_cache_df['rate']==4)]['cache_size']
+			default_cache_flops=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &(df['zfp_rate'] == rate)& (df['cache_size'] == default_cache_size.values[0])]['Megaflops'].mean()
+			if rate==4:
+				print(best_df['Megaflops'].max())
+			#print(default_cache_flops)
+			#best_df['cache_size_kb']=best_df['cache_size']/2**10
+			fig = sns.lineplot(x='cache_size', y='Megaflops', data=best_df, ci='sd', label="Rate = "+str(rate))
+			#plt.scatter(default_cache_size, default_cache_flops, marker='x', s=100,edgecolors='w')
+		plt.axvline(x=default_cache_size.values[0], color='k', linestyle='--', label='Default Cache Size')
+
+		#plt.ylim(10,50)
+		ax = plt.gca()
+		ax.set_xscale('log', basex=2)	
+		plt.legend()
+		plt.title("Performance vs Cache Size\n(n="+str(width)+")")
+		plt.ylabel('MegaFlop/s')
+		plt.xlabel('Direct Mapped Cache Size (Bytes)')
 		plt.tight_layout()
-		fig.get_figure().savefig("images/tiled_width_"+str(width)+"_rate_"+str(rate)+".pdf")
+		#fig.get_figure().savefig("images/fasthash_FLOPS_v_cacheSize_Width_"+str(width)+".pdf")
+		fig.get_figure().savefig("images/tiled_FLOPS_v_cacheSize_Width_"+str(width)+".pdf")
 
 else:
 	uncompressed_df = df.loc[(df['is_zfp'] == False) & (df['data_type'] == 'double') & (df['matrix_width'] <= width)]
@@ -109,21 +115,31 @@ else:
 			best_df=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &\
     		(df['zfp_rate'] == rate)& (df['cache_size'] >= 2**13)]
 			#print(best_df)
+			best_df['cache_size_kb']=best_df['cache_size']/2**10
+			df['cache_size_kb']=df['cache_size']/2**10
 
-			default_cache_size=default_cache_df.loc[(default_cache_df['matrix_wdith'] == width) & (default_cache_df['rate']==4)]['cache_size']
-			default_cache_flops=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &(df['zfp_rate'] == rate)& (df['cache_size'] == 0)]['Megaflops'].mean()
-			print(default_cache_flops)
-			fig = sns.lineplot(x='cache_size', y='Megaflops', data=best_df, ci='sd', label=rate)
+			default_cache_size=default_cache_df.loc[(default_cache_df['matrix_wdith'] == width) & (default_cache_df['rate']==4)]['cache_size']/2**10
+			default_cache_flops=df.loc[(df['is_zfp'] == True) & (df['data_type'] == 'double') & (df['matrix_width'] == width) &(df['zfp_rate'] == rate)& (df['cache_size_kb'] == default_cache_size.values[0])]['Megaflops'].mean()
+			
+			#if width == 1024:
+			for cs in best_df['cache_size'].unique():
+				x=best_df.loc[best_df['cache_size']==cs]['Megaflops'].mean()
+				if x-default_cache_flops > 0:
+					#print(x)
+					#print("width="+str(width)+"  rate="+str(rate)+" cs="+str(cs/2**10)+" Mflop improvement(%)="+str((x-default_cache_flops)/default_cache_flops))
+					print("width="+str(width)+"  rate="+str(rate)+" cs="+str(cs/2**10)+" Mflops="+str(x))
+			fig = sns.lineplot(x='cache_size_kb', y='Megaflops', data=best_df, ci='sd', label="Rate = "+str(rate))
 			#plt.scatter(default_cache_size, default_cache_flops, marker='x', s=100,edgecolors='w')
-			plt.axvline(x=default_cache_size.values[0], color='k', linestyle='--')
+		plt.axvline(x=default_cache_size.values[0], color='k', linestyle='--', label='Default Cache Size')
 
 		#plt.ylim(10,50)
 		ax = plt.gca()
 		ax.set_xscale('log', basex=2)	
-		plt.legend(title="ZFP Rate")
-		plt.title("DGEMM Performance Different Cache Sizes\n(n="+str(width)+")")
+		#plt.legend(title="ZFP Rate")
+		plt.legend()
+		plt.title("Performance vs Cache Size\n(n="+str(width)+")")
 		plt.ylabel('MegaFlop/s')
-		plt.xlabel('ZFP Software Cache Size (Bytes)')
+		plt.xlabel('Direct Mapped Cache Size (Kilobytes)')
 		plt.tight_layout()
 		#fig.get_figure().savefig("images/fasthash_FLOPS_v_cacheSize_Width_"+str(width)+".pdf")
 		fig.get_figure().savefig("images/FLOPS_v_cacheSize_Width_"+str(width)+".pdf")

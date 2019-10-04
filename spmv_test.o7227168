@@ -1,0 +1,63 @@
+./test_results/spmv/DEFAULT/double/sx-stackoverflow_temporal_edges/4/0
+cp: cannot stat ‘./spmv/util.h’: No such file or directory
+cp: cannot stat ‘./spmv/util.cpp’: No such file or directory
+cp: cannot stat ‘./spmv/init.h’: No such file or directory
+cp: cannot stat ‘./spmv/init.c’: No such file or directory
+cp: cannot stat ‘./spmv/mmio.h’: No such file or directory
+cp: cannot stat ‘./spmv/mmio.c’: No such file or directory
+cp: cannot stat ‘./spmv/main.cpp’: No such file or directory
+g++: error: util.cpp: No such file or directory
+g++: error: init.c: No such file or directory
+g++: error: mmio.c: No such file or directory
+g++: error: main.cpp: No such file or directory
+g++: error: mmio.o: No such file or directory
+g++: error: util.o: No such file or directory
+g++: error: main.o: No such file or directory
+g++: error: util.cpp: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+g++: error: init.c: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+g++: error: mmio.c: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+g++: error: main.cpp: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+g++: error: mmio.o: No such file or directory
+g++: error: util.o: No such file or directory
+g++: error: main.o: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+/var/spool/pbs/mom_priv/jobs/7227168.pbs02.SC: line 58: ./SpMV_zfp.exe: No such file or directory
+/var/spool/pbs/mom_priv/jobs/7227168.pbs02.SC: line 59: ./SpMV.exe: No such file or directory
+rm: cannot remove ‘./util.h’: No such file or directory
+rm: cannot remove ‘./util.cpp’: No such file or directory
+rm: cannot remove ‘./init.h’: No such file or directory
+rm: cannot remove ‘./init.c’: No such file or directory
+rm: cannot remove ‘./mmio.c’: No such file or directory
+rm: cannot remove ‘./main.cpp’: No such file or directory
+rm: cannot remove ‘./mmio.h’: No such file or directory
+rm: cannot remove ‘./util.o’: No such file or directory
+rm: cannot remove ‘./init.o’: No such file or directory
+rm: cannot remove ‘./mmio.o’: No such file or directory
+rm: cannot remove ‘./main.o’: No such file or directory
+rm: cannot remove ‘./SpMV_zfp.exe’: No such file or directory
+rm: cannot remove ‘./SpMV.exe’: No such file or directory
+ 
+ 
++------------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
++------------------------------------------+ 
+ 
+mem=100gb,ncpus=40,walltime=240:00:00
+ 
+ 
++-------------------------------------+ 
+| PALMETTO CLUSTER PBS RESOURCES USED | 
++-------------------------------------+ 
+ 
+cpupercent=0,cput=00:00:00,mem=0kb,ncpus=40,vmem=0kb,walltime=00:00:01
+ 
+ 

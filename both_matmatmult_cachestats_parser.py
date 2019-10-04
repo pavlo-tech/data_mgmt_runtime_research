@@ -30,9 +30,9 @@ matplotlib.rc('font', **font)
 matplotlib.rcParams['ps.useafm'] = True
 matplotlib.rcParams['pdf.use14corefonts'] = True
 
-Dir="./old_machine_test_results/"+("tiled_" if tiled else "")+"matmatmult/"
+Dir="./old_machine_test_results/"+("tiled_" if tiled else "")+"matmatmult_cachestats"
 
-cols=['tiled','tile_size','data_type','matrix_width','zfp_rate','cache_size',
+cols=['tiled','tile_size','data_type','matrix_width','zfp_rate','hash_algorithm','cache_size',
 	'hits','misses','write backs']
 
 def parse_cachestats(fname):
@@ -57,48 +57,66 @@ def parse_cachestats(fname):
 	
 
 
-def get_MATMATMULT_DataFrame(data_type, matrix_width, rate, cache_size, isZFP, tile_size):
-	
-	fname=Dir+(str(tile_size)+"/" if tiled else "")+data_type+"/"+str(matrix_width)+"/"+str(rate)+"/"+str(cache_size)+"/"+("tiled_" if tiled else "")+"matmatmult_"+("zfp_" if isZFP else "")+"output.txt"
+def get_MATMATMULT_DataFrame(data_type, matrix_width, rate, cache_size, isFat, isTwo):
+	if isFat and isTwo:
+		raise Exception("Invalid input!")
+
+	if isFat:
+		fname=Dir+"_fat/"+data_type+"/"+str(matrix_width)+"/"+str(rate)+"/"+str(cache_size)+"/matmatmult_zfp_output.txt"
+	elif isTwo:
+		fname=Dir+"_twoway/"+data_type+"/"+str(matrix_width)+"/"+str(rate)+"/"+str(cache_size)+"/matmatmult_zfp_output.txt"
+	else:
+		fname=Dir+"/"+data_type+"/"+str(matrix_width)+"/"+str(rate)+"/"+str(cache_size)+"/matmatmult_zfp_output.txt"
 
 	if path.exists(fname) == False or os.stat(fname).st_size == 0:
+		print("SKIPPING: "+fname)
 		df = pd.DataFrame(columns=cols)
 	else:	
+		print(fname)
 		df=parse_cachestats(fname)
 		df['tiled']=tiled
-		df['tile_size']=tile_size
+		df['tile_size']=(32 if tiled else 0)
 		df['data_type']=data_type
 		df['matrix_width']=matrix_width
 		df['zfp_rate']=rate
 		df['cache_size']=cache_size
-
+		df['hash_algorithm']=('fat'if isFat else ('twoway'if isTwo else 'default'))
 	return df
 
 # create DateFrame to hold all Results
 df = pd.DataFrame(columns=cols)
 
 if tiled:
-	for tile_size in os.listdir(Dir):
-		for data_type in os.listdir(Dir+tile_size+"/"):
-			for matrix_width in os.listdir(Dir+tile_size+"/"+data_type+"/"):
-				for rate in os.listdir(Dir+tile_size+"/"+data_type+"/"+ matrix_width+"/"):
-					for cache_size in os.listdir(Dir+tile_size+"/"+data_type+"/"+ matrix_width+"/"+rate+"/"):
-						row = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), True, tile_size)
-						df = df.append(row,ignore_index=True)
+	for data_type in os.listdir(Dir+"/"):
+		for matrix_width in os.listdir(Dir+"/"+data_type+"/"):
+			for rate in os.listdir(Dir+"/"+data_type+"/"+ matrix_width+"/"):
+				for cache_size in os.listdir(Dir+"/"+data_type+"/"+ matrix_width+"/"+rate+"/"):
+					row1 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), True, False)
+					row2 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), False, True)
+					row3 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), False, False)
+					df = df.append(row1,ignore_index=True)
+					df = df.append(row2,ignore_index=True)
+					df = df.append(row3,ignore_index=True)
 
 else:	
-	for data_type in os.listdir(Dir):
-		for matrix_width in os.listdir(Dir+data_type+"/"):
-			for rate in os.listdir(Dir+data_type+"/"+ matrix_width+"/"):
-				for cache_size in os.listdir(Dir+data_type+"/"+ matrix_width+"/"+rate+"/"):
-					row = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), True, 1)
-					df = df.append(row, ignore_index=True)
+	for data_type in os.listdir(Dir+"/"):
+		for matrix_width in os.listdir(Dir+"/"+data_type+"/"):
+			for rate in os.listdir(Dir+"/"+data_type+"/"+ matrix_width+"/"):
+				for cache_size in os.listdir(Dir+"/"+data_type+"/"+ matrix_width+"/"+rate+"/"):
+					row1 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), True, False)
+					row2 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), False, True)
+					row3 = get_MATMATMULT_DataFrame(data_type, int(matrix_width), int(rate), int(cache_size), False, False)
+					df = df.append(row1, ignore_index=True)
+					df = df.append(row2, ignore_index=True)
+					df = df.append(row3, ignore_index=True)
 
 #print( df)
 df['hit rate']=df['hits']/(df['hits'] + df['misses'])
 df['miss rate']=df['misses']/(df['hits'] + df['misses'])
+fname=("tiled_" if tiled else "")+"matmatmult_cachestats_df.csv"
 print( df)
-df.to_csv(("tiled_" if tiled else "")+"matmatmult_cachestats_df.csv")
+print(fname)
+df.to_csv(fname)
 
 exit()
 

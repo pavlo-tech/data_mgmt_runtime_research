@@ -18,13 +18,13 @@ sns.set_color_codes()
 tiled = len(sys.argv) > 1 and sys.argv[1] == "tiled"
 print("tiled" if tiled else "not tiled")
 
-fast=len(sys.argv) > 1 and sys.argv[2] == "FAST"
+fast=len(sys.argv) > 2 and sys.argv[2] == "FAST"
 print("FAST_HASH" if fast else "not fast")
 
-twoway=len(sys.argv) > 1 and sys.argv[2] == "TWOWAY"
+twoway=len(sys.argv) > 2 and sys.argv[2] == "TWOWAY"
 print("TWOWAY" if twoway else "not twoway")
 
-fat=len(sys.argv) > 1 and sys.argv[2] == "FAT"
+fat=len(sys.argv) > 2 and sys.argv[2] == "FAT"
 print("FAST_AND_TWOWAY" if fat else "not fast and twoway")
 
 sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5, 'lines.markeredgewidth': 1., 'lines.markersize': 10})
@@ -38,7 +38,7 @@ matplotlib.rc('font', **font)
 matplotlib.rcParams['ps.useafm'] = True
 matplotlib.rcParams['pdf.use14corefonts'] = True
 
-Dir="./test_results/"+("better_tiled_" if tiled else "")+"matmatmult/"+("FAST_HASH/" if fast else ("TWOWAY/" if twoway else("FAST_AND_TWOWAY/"if fat else"/")))
+Dir="./test_results/"+("tiled_" if tiled else "")+"matmatmult/"+("FAST_HASH/" if fast else ("TWOWAY/" if twoway else("FAST_AND_TWOWAY/"if fat else"DEFAULT/")))
 
 cols=['tiled','tile_size','data_type','matrix_width','zfp_rate','cache_size','is_zfp',
 	'Iteration','Time','RMSE']
@@ -89,7 +89,9 @@ else:
 					df = df.append(row, ignore_index=True)
 
 print( df)
-df.to_csv(("fasthash_" if fast else ("twoway_" if twoway else("fat_"if fat else"")))+("tiled_" if tiled else "")+"matmatmult_df.csv")
+fname=("fasthash_" if fast else ("twoway_" if twoway else("fat_"if fat else"")))+("tiled_" if tiled else "")+"matmatmult_df.csv"
+print(fname)
+df.to_csv(fname)
 
 exit()
 

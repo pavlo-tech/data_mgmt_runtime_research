@@ -26,7 +26,9 @@ for(int r = 1; r < 64; r*=2)
 		A_1536(1536, 1536, r, 0, 0),
 		A_2048(2048, 2048, r, 0, 0),
 		A_4096(4096, 4096, r, 0, 0);
-
+		
+for(int i=0;i<32;++i)for(int j=0;j<32;++j)A_32[i+32*j] = 1;
+for(int i=0;i<32;++i)for(int j=0;j<32;++j)A_32[i+32*j] = 2;
 
 		printf("%d,%d,%d\n",r,32,A_32.cache_size());
 		printf("%d,%d,%d\n",r,128,A_128.cache_size());

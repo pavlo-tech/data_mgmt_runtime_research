@@ -2,11 +2,12 @@
 #PBS -l select=1:ncpus=20:mem=50gb
 #PBS -l walltime=72:00:00
 #PBS -j oe
-#PBS -N tr_cache_accuracy
+#PBS -q fthpc
+#PBS -N fat_cache
 #PBS -m ae
 #PBS -M ptriant@g.clemson.edu
 
-partition_size=60
+partition_size=3
 
 module load gcc/4.8.1
 module load mpich
@@ -15,9 +16,9 @@ module load python/3.4
 
 # init arrays: matrix width scaled by 2^5
 data_type_arr=(double)
-matrix_width_arr=(256 512 1024)
-zfp_rate_arr=(4 8 16 32)
-zfp_cache_size_arr=(0 2048 4096 8192 16384)
+matrix_width_arr=(1024)
+zfp_rate_arr=(4)
+zfp_cache_size_arr=(16384 20480 65536)
 
 #((start = ${PBS_ARRAY_INDEX} * $partition_size))
 ((start = 0 * $partition_size))
@@ -50,7 +51,9 @@ zfp_rate=${zfp_rate_arr[$x2]}
 zfp_cache_size=${zfp_cache_size_arr[$x3]}
 
 # make folder to write output to
-output_folder=./old_machine_test_results/tiled_matmatmult_cachestats/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+#output_folder=./old_machine_test_results/matmatmult_cachestats_fasthash/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+#output_folder=./old_machine_test_results/tiled_matmatmult_cachestats_fat/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
+output_folder=./old_machine_test_results/matmatmult_cachestats/$data_type/$matrix_width/$zfp_rate/$zfp_cache_size
 mkdir -p $output_folder
 
 # copy source code to working directory
@@ -62,7 +65,8 @@ echo $output_folder
 
 # compile compressed version and uncompressed version
 #matrix_width+="l"
-MYFLAGS="-DTILED -DTILE_SIZE=32 -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_PROFILE"
+#MYFLAGS="-DTILED -DTILE_SIZE=32 -DNTIMES=1 -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_PROFILE -DZFP_WITH_CACHE_TWOWAY -DZFP_WITH_CACHE_FAST_HASH"
+MYFLAGS="-DNTIMES=1 -DDATA_TYPE=$data_type -DMATRIX_WIDTH=$matrix_width -DRATE=$zfp_rate -DCSIZE=$zfp_cache_size -DZFP_WITH_CACHE_PROFILE"
 INCFLAGS="-I/home/ptriant/Research/data_mgmt_runtime/zfp/include -I/home/ptriant/Research/data_mgmt_runtime/zfp/array"
 LINKFLAGS="-L/home/ptriant/Research/data_mgmt_runtime/zfp/lib -lzfp"
 g++ -std=c++98 -w -O3 -fPIC -pedantic -mcmodel=large $INCFLAGS -DZFP $MYFLAGS matmatmult.cpp $LINKFLAGS -o matmatmult_zfp.exe
